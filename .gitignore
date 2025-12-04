@@ -1,0 +1,47 @@
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]ogs/
+
+# Visual Studio cache
+.vs/
+*.user
+*.suo
+*.cache
+*.pdb
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+
+# Rider / JetBrains
+.idea/
+
+# Auto-generated files
+*.Designer.cs
+*.generated.cs
+
+# Publish output
+publish/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# MSTest
+TestResults/
+
+# Backup files
+*.orig
+
+# Others
+*.dbmdl
+*.jfm
+
