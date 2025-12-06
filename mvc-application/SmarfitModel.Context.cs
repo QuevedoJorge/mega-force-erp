@@ -208,5 +208,30 @@ namespace mvc_application
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarReclamo", descripcionParameter, fechaParameter, estadoParameter, codigoClienteParameter);
         }
+    
+        public virtual int SP_RegistrarSancion(Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin, string motivo, Nullable<int> codigoCliente, Nullable<bool> estado)
+        {
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("fechaInicio", fechaInicio) :
+                new ObjectParameter("fechaInicio", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("fechaFin", fechaFin) :
+                new ObjectParameter("fechaFin", typeof(System.DateTime));
+    
+            var motivoParameter = motivo != null ?
+                new ObjectParameter("motivo", motivo) :
+                new ObjectParameter("motivo", typeof(string));
+    
+            var codigoClienteParameter = codigoCliente.HasValue ?
+                new ObjectParameter("codigoCliente", codigoCliente) :
+                new ObjectParameter("codigoCliente", typeof(int));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("estado", estado) :
+                new ObjectParameter("estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarSancion", fechaInicioParameter, fechaFinParameter, motivoParameter, codigoClienteParameter, estadoParameter);
+        }
     }
 }
