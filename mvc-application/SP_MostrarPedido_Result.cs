@@ -14,9 +14,11 @@ namespace mvc_application
     public partial class SP_MostrarPedido_Result
     {
         public int codigoPedido { get; set; }
-        public int codigoCliente { get; set; }
         public System.DateTime fechaPedido { get; set; }
         public decimal total { get; set; }
         public bool estado { get; set; }
+        public int codigoCliente { get; set; }
+        public string nombreCliente { get; set; }
+        public string correoCliente { get; set; }
     }
 }

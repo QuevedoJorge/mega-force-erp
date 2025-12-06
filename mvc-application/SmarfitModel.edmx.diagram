@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="804c043c2e4b46339f1dc77eaef83f1f" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="e0a09fa5e5644e88b1ae9d52845b7451" Name="Diagram1">
         <EntityTypeShape EntityType="SmarfitModel.Cliente" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SmarfitModel.DetallePedido" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SmarfitModel.Entrenamiento" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
