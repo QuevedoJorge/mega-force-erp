@@ -1,4 +1,4 @@
-﻿@model mvc_application.Sancion
+﻿@model mvc_application.SP_BuscarSancionXCodigo_Result
 
 @{
     ViewBag.Title = "Details";
@@ -44,11 +44,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cliente.nombre)
+            Cliente
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cliente.nombre)
+            @Html.DisplayFor(model => model.nombreCliente)
         </dd>
 
     </dl>

@@ -17,8 +17,9 @@ namespace mvc_application.Controllers
         // GET: Pedidoes
         public ActionResult Index()
         {
-            var pedido = db.Pedido.Include(p => p.Cliente);
-            return View(pedido.ToList());
+            // Call the SP to get all orders with client data
+            var pedidos = db.SP_MostrarPedidoTodo().ToList();
+            return View(pedidos);
         }
 
         // GET: Pedidoes/Details/5
@@ -28,7 +29,8 @@ namespace mvc_application.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
+            // Call the SP to find an order by ID
+            var pedido = db.SP_BuscarPedidoXCodigo(id).FirstOrDefault();
             if (pedido == null)
             {
                 return HttpNotFound();
@@ -44,16 +46,14 @@ namespace mvc_application.Controllers
         }
 
         // POST: Pedidoes/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "codigoPedido,codigoCliente,fechaPedido,total,estado")] Pedido pedido)
+        public ActionResult Create([Bind(Include = "codigoCliente,total,estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
-                db.Pedido.Add(pedido);
-                db.SaveChanges();
+                // Call the SP to register the new order
+                db.SP_RegistrarPedido(pedido.codigoCliente, pedido.total, pedido.estado);
                 return RedirectToAction("Index");
             }
 
@@ -68,6 +68,7 @@ namespace mvc_application.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            // Find the original order to pre-fill the form
             Pedido pedido = db.Pedido.Find(id);
             if (pedido == null)
             {
@@ -78,16 +79,14 @@ namespace mvc_application.Controllers
         }
 
         // POST: Pedidoes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "codigoPedido,codigoCliente,fechaPedido,total,estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pedido).State = EntityState.Modified;
-                db.SaveChanges();
+                // Call the SP to update the order
+                db.SP_ActualizarPedido(pedido.codigoPedido, pedido.codigoCliente, pedido.total, pedido.estado);
                 return RedirectToAction("Index");
             }
             ViewBag.codigoCliente = new SelectList(db.Cliente, "codigoCliente", "nombre", pedido.codigoCliente);
@@ -101,7 +100,8 @@ namespace mvc_application.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
+            // Call the SP to find the order to be deleted
+            var pedido = db.SP_BuscarPedidoXCodigo(id).FirstOrDefault();
             if (pedido == null)
             {
                 return HttpNotFound();
@@ -114,9 +114,8 @@ namespace mvc_application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pedido pedido = db.Pedido.Find(id);
-            db.Pedido.Remove(pedido);
-            db.SaveChanges();
+            // Call the SP to perform a logical delete
+            db.SP_EliminarPedido(id);
             return RedirectToAction("Index");
         }
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SmarfitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SmarfitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="codigoCliente" />
@@ -260,6 +260,13 @@
           <Parameter Name="estado" Type="bit" Mode="In" />
           <Parameter Name="codigoCliente" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_RegistrarSancion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaInicio" Type="date" Mode="In" />
+          <Parameter Name="fechaFin" Type="date" Mode="In" />
+          <Parameter Name="motivo" Type="varchar" Mode="In" />
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+        </Function>
         <EntityContainer Name="SmarfitModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" Schema="dbo" store:Type="Tables" />
@@ -307,8 +314,7 @@
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SmarfitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -597,24 +603,24 @@
             <Parameter Name="estado" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SP_BuscarPedidoXCodigo" ReturnType="Collection(SmarfitModel.SP_BuscarPedidoXCodigo_Result)">
-            <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
+          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_BuscarSancionXCodigo" ReturnType="Collection(SmarfitModel.SP_BuscarSancionXCodigo_Result)">
-            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_CodigoPedido" ReturnType="Collection(Int32)" />
           <FunctionImport Name="SP_CodigoSancion" ReturnType="Collection(Int32)" />
           <FunctionImport Name="SP_EliminarPedido">
-            <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
+          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_EliminarSancion">
-            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_HabilitarPedido">
-            <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
+          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_HabilitarSancion">
-            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_MostrarPedido" ReturnType="Collection(SmarfitModel.SP_MostrarPedido_Result)" />
           <FunctionImport Name="SP_MostrarPedidoTodo" ReturnType="Collection(SmarfitModel.SP_MostrarPedidoTodo_Result)" />
@@ -630,6 +636,13 @@
             <Parameter Name="fecha" Mode="In" Type="DateTime" />
             <Parameter Name="estado" Mode="In" Type="Boolean" />
             <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RegistrarSancion">
+            <Parameter Name="fechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="motivo" Mode="In" Type="String" />
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_BuscarPedidoXCodigo_Result">
@@ -893,6 +906,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_RegistrarPedido" FunctionName="SmarfitModel.Store.SP_RegistrarPedido" />
           <FunctionImportMapping FunctionImportName="SP_RegistrarReclamo" FunctionName="SmarfitModel.Store.SP_RegistrarReclamo" />
+          <FunctionImportMapping FunctionImportName="SP_RegistrarSancion" FunctionName="SmarfitModel.Store.SP_RegistrarSancion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

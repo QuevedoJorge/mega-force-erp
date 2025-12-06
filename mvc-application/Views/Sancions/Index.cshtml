@@ -1,11 +1,11 @@
-﻿@model IEnumerable<mvc_application.Sancion>
+﻿@model IEnumerable<mvc_application.SP_MostrarSancionTodo_Result>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Sanciones</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -25,7 +25,7 @@
             @Html.DisplayNameFor(model => model.estado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cliente.nombre)
+            Cliente
         </th>
         <th></th>
     </tr>
@@ -45,7 +45,7 @@
             @Html.DisplayFor(modelItem => item.estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Cliente.nombre)
+            @Html.DisplayFor(modelItem => item.nombreCliente)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.codigo }) |

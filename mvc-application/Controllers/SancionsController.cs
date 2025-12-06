@@ -17,8 +17,9 @@ namespace mvc_application.Controllers
         // GET: Sancions
         public ActionResult Index()
         {
-            var sancion = db.Sancion.Include(s => s.Cliente);
-            return View(sancion.ToList());
+            // Call the SP to get all sanctions with client data
+            var sancion = db.SP_MostrarSancionTodo().ToList();
+            return View(sancion);
         }
 
         // GET: Sancions/Details/5
@@ -28,7 +29,8 @@ namespace mvc_application.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sancion sancion = db.Sancion.Find(id);
+            // Call the SP to find a sanction by ID
+            var sancion = db.SP_BuscarSancionXCodigo(id).FirstOrDefault();
             if (sancion == null)
             {
                 return HttpNotFound();
@@ -44,16 +46,14 @@ namespace mvc_application.Controllers
         }
 
         // POST: Sancions/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "codigo,fechaInicio,fechaFin,motivo,codigoCliente,estado")] Sancion sancion)
+        public ActionResult Create([Bind(Include = "fechaInicio,fechaFin,motivo,codigoCliente,estado")] Sancion sancion)
         {
             if (ModelState.IsValid)
             {
-                db.Sancion.Add(sancion);
-                db.SaveChanges();
+                // Call the SP to register the new sanction
+                db.SP_RegistrarSancion(sancion.fechaInicio, sancion.fechaFin, sancion.motivo, sancion.codigoCliente, sancion.estado);
                 return RedirectToAction("Index");
             }
 
@@ -68,6 +68,7 @@ namespace mvc_application.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            // Find the original sanction to pre-fill the form
             Sancion sancion = db.Sancion.Find(id);
             if (sancion == null)
             {
@@ -78,16 +79,14 @@ namespace mvc_application.Controllers
         }
 
         // POST: Sancions/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "codigo,fechaInicio,fechaFin,motivo,codigoCliente,estado")] Sancion sancion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sancion).State = EntityState.Modified;
-                db.SaveChanges();
+                // Call the SP to update the sanction
+                db.SP_ActualizarSancion(sancion.codigo, sancion.fechaInicio, sancion.fechaFin, sancion.motivo, sancion.codigoCliente, sancion.estado);
                 return RedirectToAction("Index");
             }
             ViewBag.codigoCliente = new SelectList(db.Cliente, "codigoCliente", "nombre", sancion.codigoCliente);
@@ -101,7 +100,8 @@ namespace mvc_application.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sancion sancion = db.Sancion.Find(id);
+            // Call the SP to find the sanction to be deleted
+            var sancion = db.SP_BuscarSancionXCodigo(id).FirstOrDefault();
             if (sancion == null)
             {
                 return HttpNotFound();
@@ -114,9 +114,8 @@ namespace mvc_application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sancion sancion = db.Sancion.Find(id);
-            db.Sancion.Remove(sancion);
-            db.SaveChanges();
+            // Call the SP to perform a logical delete
+            db.SP_EliminarSancion(id);
             return RedirectToAction("Index");
         }
 
