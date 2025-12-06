@@ -1028,7 +1028,7 @@ GO
 CREATE OR ALTER PROC SP_MostrarPedidoTodo
 AS
 BEGIN
-    SELECT * FROM Pedido;
+    SELECT p.codigoPedido, c.codigoCliente, fechaPedido, total, p.estado, nombre, correo, telefono, direccion, historialEntrenamientos FROM Pedido p inner join Cliente c on p.codigoCliente = c.codigoCliente;
 END
 GO
 
