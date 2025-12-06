@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -43,7 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -88,19 +97,170 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EDMMegaForce.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EDMMegaForce.Context.cs</LastGenOutput>
+      <DependentUpon>EDMMegaForce.edmx</DependentUpon>
+    </Content>
+    <Content Include="EDMMegaForce.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EDMMegaForce.edmx</DependentUpon>
+      <LastGenOutput>EDMMegaForce.cs</LastGenOutput>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Cliente.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PedidoesController.cs" />
+    <Compile Include="Controllers\SancionsController.cs" />
+    <Compile Include="DetallePedido.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMMegaForce.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDMMegaForce.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMMegaForce.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMMegaForce.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDMMegaForce.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrenamiento.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Inscripciones.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Locales.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pedido.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reclamo.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sancion.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarClienteXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarDetallePedidoXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarEntrenamientoXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarLocalesXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarPedidoXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarReclamoXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarSancionXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarTrainerXCodigo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarClienteTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarCliente_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarDetallePedidoTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarDetallePedido_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarEntrenamientoTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarEntrenamiento_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarInscripcionesPorCliente_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarInscripciones_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarLocalesTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarLocales_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarPedidoTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarPedido_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarReclamoTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarReclamo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarSancionTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarSancion_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarTrainerTodo_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarTrainer_Result.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trainer.cs">
+      <DependentUpon>EDMMegaForce.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="EDMMegaForce.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EDMMegaForce.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EDMMegaForce.edmx.diagram">
+      <DependentUpon>EDMMegaForce.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Sancions\Create.cshtml" />
+    <Content Include="Views\Sancions\Delete.cshtml" />
+    <Content Include="Views\Sancions\Details.cshtml" />
+    <Content Include="Views\Sancions\Edit.cshtml" />
+    <Content Include="Views\Sancions\Index.cshtml" />
+    <Content Include="Views\Pedidoes\Create.cshtml" />
+    <Content Include="Views\Pedidoes\Delete.cshtml" />
+    <Content Include="Views\Pedidoes\Details.cshtml" />
+    <Content Include="Views\Pedidoes\Edit.cshtml" />
+    <Content Include="Views\Pedidoes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,8 +270,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Sancion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -143,7 +306,10 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
