@@ -18,9 +18,9 @@ namespace rest_application
         public Cliente()
         {
             this.Inscripciones = new HashSet<Inscripciones>();
+            this.Pedido = new HashSet<Pedido>();
             this.Reclamo = new HashSet<Reclamo>();
             this.Sancion = new HashSet<Sancion>();
-            this.Pedido = new HashSet<Pedido>();
         }
     
         public int codigoCliente { get; set; }
@@ -34,10 +34,10 @@ namespace rest_application
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscripciones> Inscripciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pedido> Pedido { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reclamo> Reclamo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sancion> Sancion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }

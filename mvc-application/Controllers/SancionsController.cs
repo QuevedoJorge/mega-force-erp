@@ -53,7 +53,13 @@ namespace mvc_application.Controllers
             if (ModelState.IsValid)
             {
                 // Call the SP to register the new sanction
-                db.SP_RegistrarSancion(sancion.fechaInicio, sancion.fechaFin, sancion.motivo, sancion.codigoCliente, sancion.estado);
+                db.SP_RegistrarSancion(
+    sancion.fechaInicio.ToString(),
+    sancion.fechaFin.ToString(),
+    sancion.motivo,
+    sancion.codigoCliente.ToString(),
+    sancion.estado.ToString()
+);
                 return RedirectToAction("Index");
             }
 
@@ -86,7 +92,13 @@ namespace mvc_application.Controllers
             if (ModelState.IsValid)
             {
                 // Call the SP to update the sanction
-                db.SP_ActualizarSancion(sancion.codigo, sancion.fechaInicio, sancion.fechaFin, sancion.motivo, sancion.codigoCliente, sancion.estado);
+                db.SP_RegistrarSancion(
+    sancion.fechaInicio.ToString(),
+    sancion.fechaFin.ToString(),
+    sancion.motivo,
+    sancion.codigoCliente.ToString(),
+    sancion.estado.ToString()
+);
                 return RedirectToAction("Index");
             }
             ViewBag.codigoCliente = new SelectList(db.Cliente, "codigoCliente", "nombre", sancion.codigoCliente);

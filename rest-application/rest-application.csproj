@@ -93,34 +93,169 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SmarfitModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="SmartfitModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SmartfitModel.edmx</DependentUpon>
+      <LastGenOutput>SmartfitModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SmartfitModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SmartfitModel.edmx</DependentUpon>
+      <LastGenOutput>SmartfitModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Cliente.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePedido.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entrenamiento.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Inscripciones.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Locales.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetodoPago.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pedido.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reclamo.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sancion.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SmarfitModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SmarfitModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SmarfitModel.Designer.cs">
+    <Compile Include="SmartfitModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SmarfitModel.edmx</DependentUpon>
+      <DependentUpon>SmartfitModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SmartfitModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarClienteXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarDetallePedidoXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarEntrenamientoXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarInscripcionesXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarLocalesXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarMetodoPagoXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarPedidoXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarReclamoXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarSancionXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_BuscarTrainerXCodigo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarClienteTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarCliente_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarDetallePedidoTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarDetallePedido_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarEntrenamientoTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarEntrenamiento_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarInscripcionesTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarInscripciones_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarLocalesTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarLocales_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarMetodoPagoTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarMetodoPago_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarPedidoTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarPedido_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarReclamoTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarReclamo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarSancionTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarSancion_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarTrainerTodo_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_MostrarTrainer_Result.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trainer.cs">
+      <DependentUpon>SmartfitModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <EntityDeploy Include="SmarfitModel.edmx">
+    <EntityDeploy Include="SmartfitModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SmarfitModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>SmartfitModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="SmarfitModel.edmx.diagram">
-      <DependentUpon>SmarfitModel.edmx</DependentUpon>
-    </None>
+    <Content Include="SmartfitModel.edmx.diagram">
+      <DependentUpon>SmartfitModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

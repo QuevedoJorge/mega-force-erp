@@ -25,6 +25,7 @@ namespace mvc_application
         public string apellido { get; set; }
         public string especialidad { get; set; }
         public bool disponibilidad { get; set; }
+        public bool estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrenamiento> Entrenamiento { get; set; }

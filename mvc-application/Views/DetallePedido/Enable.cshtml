@@ -1,0 +1,74 @@
+﻿@model mvc_application.SP_BuscarDetallePedidoXCodigo_Result
+
+@{
+    ViewBag.Title = "Habilitación de Detalle de Pedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Habilitación de Detalle de Pedido</h2>
+
+<h3>¿Estás seguro que quieres habilitar este Detalle de Pedido?</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <label>Cliente (Pedido):</label>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreCliente)
+        </dd>
+
+        <dt>
+            <label>Entrenamiento:</label>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreEntrenamiento)
+        </dd>
+
+        <dt>
+            <label>Cantidad:</label>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            <label>Precio Unitario:</label>
+        </dt>
+        <dd>
+            S/. @Html.DisplayFor(model => model.precioUnitario)
+        </dd>
+
+        <dt>
+            <label>Total:</label>
+        </dt>
+        <dd>
+            S/. @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+
+        <dt>
+            <label>Estado Actual:</label>
+        </dt>
+        <dd>
+            @{
+                var textoEstado = (Model.estado == true) ? "Habilitado" : "Deshabilitado";
+                var colorEstado = (Model.estado == true) ? "green" : "red";
+            }
+            <span style="color:@colorEstado; font-weight:bold;">@textoEstado</span>
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Habilitar" class="btn btn-warning" />
+
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-dark" })
+        </div>
+    }
+</div>

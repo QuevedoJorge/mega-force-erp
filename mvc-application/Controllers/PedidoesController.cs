@@ -52,8 +52,13 @@ namespace mvc_application.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Call the SP to register the new order
-                db.SP_RegistrarPedido(pedido.codigoCliente, pedido.total, pedido.estado);
+                db.SP_RegistrarPedido(
+    pedido.codigoCliente.ToString(),
+    pedido.idMetodoPago.ToString(),
+    pedido.fechaPedido.ToString(),
+    "0",
+    pedido.estado.ToString()
+);
                 return RedirectToAction("Index");
             }
 
@@ -86,7 +91,14 @@ namespace mvc_application.Controllers
             if (ModelState.IsValid)
             {
                 // Call the SP to update the order
-                db.SP_ActualizarPedido(pedido.codigoPedido, pedido.codigoCliente, pedido.total, pedido.estado);
+                db.SP_ActualizarPedido(
+    pedido.codigoPedido,
+    pedido.codigoCliente.ToString(),
+    pedido.idMetodoPago.ToString(),    
+    pedido.fechaPedido.ToString(),    
+    "0",                               
+    pedido.estado.ToString()          
+);
                 return RedirectToAction("Index");
             }
             ViewBag.codigoCliente = new SelectList(db.Cliente, "codigoCliente", "nombre", pedido.codigoCliente);

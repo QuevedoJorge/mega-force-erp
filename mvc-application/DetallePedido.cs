@@ -21,7 +21,7 @@ namespace mvc_application
         public decimal precioUnitario { get; set; }
         public bool estado { get; set; }
     
-        public virtual Entrenamiento Entrenamiento { get; set; }
         public virtual Pedido Pedido { get; set; }
+        public virtual Entrenamiento Entrenamiento { get; set; }
     }
 }

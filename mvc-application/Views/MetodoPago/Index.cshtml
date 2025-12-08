@@ -1,0 +1,67 @@
+﻿@model IEnumerable<mvc_application.SP_MostrarMetodoPagoTodo_Result>
+
+@{
+    ViewBag.Title = "Mantenimiento de Método de Pago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Método de Pago</h2>
+
+<p>
+    @* Botón Azul para Crear *@
+    @Html.ActionLink("Nuevo Método", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+                <th colspan="4" class="text-center"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idMetodoPago)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.descripcion)
+                    </td>
+                    <td>
+                        @if (item.estado == true)
+                        {
+                            <span class="badge label-success" style="color:green; font-weight:bold;">Habilitado</span>
+                        }
+                        else
+                        {
+                            <span class="badge label-danger" style="color:red; font-weight:bold;">Deshabilitado</span>
+                        }
+                    </td>
+
+                    <td class="text-center">
+                        @Html.ActionLink("Actualizar", "Edit", new { id = item.idMetodoPago }, new { @class = "btn btn-success btn-sm" })
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Detalles", "Details", new { id = item.idMetodoPago }, new { @class = "btn btn-secondary btn-sm" })
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.idMetodoPago }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Habilitar", "Enable", new { id = item.idMetodoPago }, new { @class = "btn btn-warning btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

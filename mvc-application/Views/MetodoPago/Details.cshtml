@@ -1,0 +1,48 @@
+﻿@model mvc_application.SP_BuscarMetodoPagoXCodigo_Result
+
+@{
+    ViewBag.Title = "Detalles de Método de Pago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de Método de Pago</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <label>Nombre</label>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            <label>Descripción</label>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            <label>Estado</label>
+        </dt>
+        <dd>
+            @if (Model.estado == true)
+            {
+                <span class="badge label-success" style="color:green; font-weight:bold;">Habilitado</span>
+            }
+            else
+            {
+                <span class="badge label-danger" style="color:red; font-weight:bold;">Deshabilitado</span>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Actualizar", "Edit", new { id = Model.idMetodoPago }, new { @class = "btn btn-success" })
+
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-dark" })
+</p>
