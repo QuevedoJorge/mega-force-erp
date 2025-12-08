@@ -1,0 +1,71 @@
+﻿@model IEnumerable<mvc_application.SP_MostrarDetallePedidoTodo_Result>
+
+@{
+    ViewBag.Title = "Mantenimiento Detalle Pedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento Detalle Pedido</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Detalle", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Entrenamiento</th>
+                <th>Cant.</th>
+                <th>Precio Unit.</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th colspan="4" class="text-center">A</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.codigoDetallePedido)</td>
+                    <td>
+                        @Html.DisplayFor(m => item.NombreCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.NombreEntrenamiento)
+                    </td>
+                    <td>@Html.DisplayFor(m => item.cantidad)</td>
+                    <td>S/. @Html.DisplayFor(m => item.precioUnitario)</td>
+                    <td>
+                        S/. @Html.DisplayFor(m => item.Subtotal)
+                    </td>
+                    <td>
+                        @if (item.estado == true)
+                        {
+                            <span class="badge label-success" style="color:green; font-weight:bold;">Habilitado</span>
+                        }
+                        else
+                        {
+                            <span class="badge label-danger" style="color:red; font-weight:bold;">Deshabilitado</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Actualizar", "Edit", new { id = item.codigoDetallePedido }, new { @class = "btn btn-success btn-sm" })
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Detalles", "Details", new { id = item.codigoDetallePedido }, new { @class = "btn btn-secondary btn-sm" })
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.codigoDetallePedido }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Habilitar", "Enable", new { id = item.codigoDetallePedido }, new { @class = "btn btn-warning btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

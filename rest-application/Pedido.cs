@@ -22,6 +22,7 @@ namespace rest_application
     
         public int codigoPedido { get; set; }
         public int codigoCliente { get; set; }
+        public Nullable<int> idMetodoPago { get; set; }
         public System.DateTime fechaPedido { get; set; }
         public decimal total { get; set; }
         public bool estado { get; set; }
@@ -29,5 +30,6 @@ namespace rest_application
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetallePedido> DetallePedido { get; set; }
+        public virtual MetodoPago MetodoPago { get; set; }
     }
 }

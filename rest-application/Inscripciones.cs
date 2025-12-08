@@ -17,8 +17,8 @@ namespace rest_application
         public int codigoInscripcion { get; set; }
         public int codigoCliente { get; set; }
         public int codigoEntrenamiento { get; set; }
-        public Nullable<System.DateTime> fechaInscripcion { get; set; }
-        public Nullable<bool> estado { get; set; }
+        public System.DateTime fechaInscripcion { get; set; }
+        public bool estado { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual Entrenamiento Entrenamiento { get; set; }
