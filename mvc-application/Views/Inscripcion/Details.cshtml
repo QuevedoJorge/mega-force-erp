@@ -1,0 +1,62 @@
+﻿@model pe.com.megaforce.SP_BuscarInscripcionXCodigo_Result
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inscripciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.fechaInscripcion)*@
+            Fecha de Inscripcion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaInscripcion)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Cliente.nombre)*@
+            Nombre del cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreCliente)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Entrenamiento.tipo)*@
+            Tipo de Entrenamiento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoEntrenamiento)
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.estado)*@
+            @if(Model.estado)
+            {
+                <span>Habilitado</span>
+            }
+            else
+            {
+                <span>Deshabilitado</span>                
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Actualizar", "Edit", new { id = Model.codigoEntrenamiento }, new {@class ="btn btn-success"})
+    @Html.ActionLink("Regresar", "Index", null , new {@class ="btn btn-dark"})
+</p>

@@ -1,0 +1,72 @@
+﻿@model pe.com.megaforce.Trainer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de Trainers</h2>
+
+<div>
+    <h4>Trainer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.nombre)*@
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.apellido)*@
+            Apellido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.especialidad)*@
+            Especialidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especialidad)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.disponibilidad)*@
+            Disponibilidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.disponibilidad)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.estado)*@
+            @if(Model.estado)
+            {
+                <span>Habilitado</span>
+            }
+            else
+            {
+                <span>Deshabilitado</span>                
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Actualizar", "Edit", new { id = Model.codigoTrainer}, new {@class ="btn btn-success"})
+    @Html.ActionLink("Regresar", "Index", null , new {@class ="btn btn-dark"})
+</p>

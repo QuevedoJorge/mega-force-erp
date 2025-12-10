@@ -1,0 +1,74 @@
+﻿@model pe.com.megaforce.Trainer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Habilitacion de Trainer</h2>
+
+<h3>¿Estas seguro que quieres habilitar el Trainer?</h3>
+<div>
+    <h4>Trainer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.nombre)*@
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.apellido)*@
+            Apellido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.especialidad)*@
+            Especialidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.especialidad)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.disponibilidad)*@
+            Disponibilidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.disponibilidad)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado:
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.estado)*@
+            @{
+                var estado=Model.estado ? "Habilitado":"Deshabilitado";
+            }
+            @estado
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Habilitar" class="btn btn-warning" /> 
+            @Html.ActionLink("Regresar", "Index", null, new {@class="btn btn-dark"})
+        </div>
+    }
+</div>

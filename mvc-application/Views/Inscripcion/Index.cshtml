@@ -1,0 +1,85 @@
+﻿@model IEnumerable<pe.com.megaforce.SP_MostrarInscripcionTodo_Result>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Inscripcion</h2>
+
+<p>
+    @Html.ActionLink("Nueva Inscripcion", "Create", null, new {@class="btn btn-primary"})
+</p>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.codigoInscripcion)*@
+            Codigo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Cliente.nombre)*@
+            Nombre del Cliente
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Entrenamiento.tipo)*@
+            Tipo de Entrenamiento
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.fechaInscripcion)*@
+            Fecha de Inscripcion
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoInscripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoEntrenamiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaInscripcion)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.estado)*@
+            @if(item.estado)
+            {
+                <span>Habilitado</span>
+            }
+            else
+            {
+                <span>Deshabilitado</span>                
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.codigoInscripcion }, new {@class="btn btn-success"})
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id=item.codigoInscripcion }, new {@class="btn btn-secondary"}) 
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.codigoInscripcion }, new {@class="btn btn-danger"})
+        </td>
+        <td>
+            @Html.ActionLink("Habilitar", "Enable", new { id=item.codigoInscripcion }, new {@class="btn btn-warning"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

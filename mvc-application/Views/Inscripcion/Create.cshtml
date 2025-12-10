@@ -1,0 +1,63 @@
+﻿@model pe.com.megaforce.Inscripciones
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Creacion de Inscripciones (los deshabilitados no apareceran)</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Inscripciones</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.codigoCliente, "Nombre de Cliente:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("codigoCliente", 
+                (IEnumerable<SelectListItem>)ViewBag.codigoCliente, 
+                "Seleccione su Cliente", 
+                new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.codigoCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codigoEntrenamiento, "Nombre de Entrenamiento:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("codigoEntrenamiento", 
+                (IEnumerable<SelectListItem>)ViewBag.codigoEntrenamiento, 
+                "Seleccione su Entrenamiento", 
+                new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.codigoEntrenamiento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.estado,"Estado:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.estado)
+                    @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                    <label>Habilitado</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar" class="btn btn-primary" />
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-dark" })
+            </div>  
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

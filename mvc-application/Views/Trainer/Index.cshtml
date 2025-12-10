@@ -1,0 +1,92 @@
+﻿@model IEnumerable<pe.com.megaforce.Trainer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento Trainers</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Trainer", "Create", null, new {@class="btn btn-primary"})
+</p>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.codigoTrainer)*@
+            Codigo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.nombre)*@
+            Nombre
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.apellido)*@
+            Apellido
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.especialidad)*@
+            Especialidad
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.disponibilidad)*@
+            Disponibilidad
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoTrainer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.especialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disponibilidad)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.estado)*@
+            @if(item.estado)
+            {
+                <span>Habilitado</span>
+            }
+            else
+            {
+                <span>Deshabilitado</span>                
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.codigoTrainer }, new {@class="btn btn-success"})
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id=item.codigoTrainer }, new {@class="btn btn-secondary"}) 
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.codigoTrainer }, new {@class="btn btn-danger"})
+        </td>
+        <td>
+            @Html.ActionLink("Habilitar", "Enable", new { id=item.codigoTrainer }, new {@class="btn btn-warning"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

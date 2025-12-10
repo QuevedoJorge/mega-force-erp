@@ -1,0 +1,86 @@
+﻿@model IEnumerable<pe.com.megaforce.Locales>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento Locales</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Local", "Create", null, new {@class="btn btn-primary"})
+</p>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.codigoLocal)*@
+            Codigo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tipo)*@
+            Tipo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.direccion)*@
+            Direccion
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.capacidadMaxima)*@
+            Capacidad Maxima
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoLocal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capacidadMaxima)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.estado)*@
+            @if(item.estado)
+            {
+                <span>Habilitado</span>
+            }
+            else
+            {
+                <span>Deshabilitado</span>                
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.codigoLocal }, new {@class="btn btn-success"})
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id=item.codigoLocal }, new {@class="btn btn-secondary"}) 
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.codigoLocal }, new {@class="btn btn-danger"})
+        </td>
+        <td>
+            @Html.ActionLink("Habilitar", "Enable", new { id=item.codigoLocal }, new {@class="btn btn-warning"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

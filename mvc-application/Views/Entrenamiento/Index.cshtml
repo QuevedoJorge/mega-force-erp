@@ -1,0 +1,114 @@
+﻿@model IEnumerable<pe.com.megaforce.SP_MostrarEntrenamientoTodo_Result>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Entrenamiento</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Entrenamiento", "Create", null, new {@class="btn btn-primary"})
+</p>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.codigoEntrenamiento)*@
+            Codigo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tipo)*@
+            Tipo
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.fechaHora)*@
+            Fecha y Hora
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.duracion)*@
+            Duracion
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ubicacion)*@
+            Ubicacion
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.capacidadMaxima)*@
+            Capacidad Maxima
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Trainer.nombre)*@
+            Nombre del trainer
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Locales.tipo)*@
+            Local
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoEntrenamiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoEntrenamiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaHora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ubicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capacidadMaxima)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreTrainer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoLocal)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.estado)*@
+            @if(item.estado)
+            {
+                <span>Habilitado</span>
+            }
+            else
+            {
+                <span>Deshabilitado</span>                
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.codigoEntrenamiento }, new {@class="btn btn-success"})
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id=item.codigoEntrenamiento }, new {@class="btn btn-secondary"}) 
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.codigoEntrenamiento }, new {@class="btn btn-danger"})
+        </td>
+        <td>
+            @Html.ActionLink("Habilitar", "Enable", new { id=item.codigoEntrenamiento }, new {@class="btn btn-warning"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

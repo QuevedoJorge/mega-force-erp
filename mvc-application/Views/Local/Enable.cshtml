@@ -1,0 +1,65 @@
+﻿@model pe.com.megaforce.Locales
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Habilitacion de Locales</h2>
+
+<h3>¿Estas seguro que quieres habilitar el Local?</h3>
+<div>
+    <h4>Locales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.tipo)*@
+            Tipo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.direccion)*@
+            Direccion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.capacidadMaxima)*@
+            Capacidad Maxima
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidadMaxima)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado:
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.estado)*@
+            @{
+                var estado=Model.estado ? "Habilitado":"Deshabilitado";
+            }
+            @estado
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Habilitar" class="btn btn-warning" /> 
+            @Html.ActionLink("Regresar", "Index", null, new {@class="btn btn-dark"})
+        </div>
+    }
+</div>

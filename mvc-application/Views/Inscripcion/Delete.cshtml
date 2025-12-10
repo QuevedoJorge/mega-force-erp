@@ -1,0 +1,68 @@
+﻿@model pe.com.megaforce.SP_BuscarInscripcionXCodigo_Result
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminacion de Inscripcion</h2>
+
+<h3>¿Estas seguro que quieres eliminar la Inscripcion?</h3>
+<div>
+    <h4>Inscripciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.fechaInscripcion)*@
+            Fecha de Inscripcion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaInscripcion)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Cliente.nombre)*@
+            Nombre del Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreCliente)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Entrenamiento.tipo)*@
+            Tipo de Entrenamiento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoEntrenamiento)
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.estado)*@
+            Estado
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.estado)*@
+            @if(Model.estado)
+            {
+                <span>Habilitado</span>
+            }
+            else
+            {
+                <span>Deshabilitado</span>                
+            }
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Regresar", "Index", null , new {@class ="btn btn-dark"})
+        </div>
+    }
+</div>
