@@ -1,4 +1,8 @@
-    IF EXISTS(
+ use megaforce
+ go
+ 
+
+ IF EXISTS(
         SELECT
             *
         FROM

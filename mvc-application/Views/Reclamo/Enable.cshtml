@@ -1,0 +1,57 @@
+@model mvc_application.Reclamo
+
+@{
+    ViewBag.Title = "Habilitar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Habilitar Reclamo</h2>
+
+<h3>¿Estás seguro que quieres habilitar este reclamo?</h3>
+<div>
+    <h4>Reclamo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Habilitar" class="btn btn-success" /> |
+            @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

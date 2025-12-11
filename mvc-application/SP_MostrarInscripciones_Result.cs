@@ -15,7 +15,9 @@ namespace mvc_application
     {
         public int codigoInscripcion { get; set; }
         public int codigoCliente { get; set; }
+        public string NombreCliente { get; set; }
         public int codigoEntrenamiento { get; set; }
+        public string NombreEntrenamiento { get; set; }
         public System.DateTime fechaInscripcion { get; set; }
         public bool estado { get; set; }
     }

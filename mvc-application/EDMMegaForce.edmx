@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SmartfitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="megaforceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="codigoCliente" />
@@ -236,12 +236,12 @@
         </Association>
         <Function Name="SP_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoCliente" Type="int" Mode="In" />
-          <Parameter Name="nombre" Type="varchar(max)" Mode="In" />
-          <Parameter Name="correo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="telefono" Type="varchar(max)" Mode="In" />
-          <Parameter Name="direccion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="historialEntrenamientos" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="historialEntrenamientos" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_ActualizarDetallePedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoDetallePedido" Type="int" Mode="In" />
@@ -253,28 +253,21 @@
         </Function>
         <Function Name="SP_ActualizarEntrenamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoEntrenamiento" Type="int" Mode="In" />
-          <Parameter Name="tipo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaHora" Type="varchar(max)" Mode="In" />
-          <Parameter Name="duracion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="ubicacion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="capacidadMaxima" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoTrainer" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoLocal" Type="varchar(max)" Mode="In" />
-        </Function>
-        <Function Name="SP_ActualizarInscripciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigoInscripcion" Type="int" Mode="In" />
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoEntrenamiento" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaInscripcion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="fechaHora" Type="datetime" Mode="In" />
+          <Parameter Name="duracion" Type="decimal" Mode="In" />
+          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="capacidadMaxima" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="codigoTrainer" Type="int" Mode="In" />
+          <Parameter Name="codigoLocal" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_ActualizarLocales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoLocal" Type="int" Mode="In" />
-          <Parameter Name="tipo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="direccion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="capacidadMaxima" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="capacidadMaxima" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_ActualizarMetodoPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idMetodoPago" Type="int" Mode="In" />
@@ -284,26 +277,26 @@
         </Function>
         <Function Name="SP_ActualizarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoPedido" Type="int" Mode="In" />
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
-          <Parameter Name="idMetodoPago" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaPedido" Type="varchar(max)" Mode="In" />
-          <Parameter Name="total" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
+          <Parameter Name="idMetodoPago" Type="int" Mode="In" />
+          <Parameter Name="fechaPedido" Type="datetime" Mode="In" />
+          <Parameter Name="total" Type="decimal" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_ActualizarReclamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigo" Type="int" Mode="In" />
-          <Parameter Name="descripcion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fecha" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_ActualizarSancion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigo" Type="int" Mode="In" />
-          <Parameter Name="fechaInicio" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaFin" Type="varchar(max)" Mode="In" />
-          <Parameter Name="motivo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="fechaInicio" Type="date" Mode="In" />
+          <Parameter Name="fechaFin" Type="date" Mode="In" />
+          <Parameter Name="motivo" Type="varchar" Mode="In" />
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_ActualizarTrainer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoTrainer" Type="int" Mode="In" />
@@ -320,10 +313,10 @@
           <Parameter Name="codigoDetallePedido" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_BuscarEntrenamientoXCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigoEntrenamiento" Type="int" Mode="In" />
+          <Parameter Name="codigo" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_BuscarInscripcionesXCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigoInscripcion" Type="int" Mode="In" />
+        <Function Name="SP_BuscarInscripcionXCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codigo" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_BuscarLocalesXCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoLocal" Type="int" Mode="In" />
@@ -346,7 +339,6 @@
         <Function Name="SP_CodigoCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_CodigoDetallePedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_CodigoEntrenamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_CodigoInscripciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_CodigoLocales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_CodigoMetodoPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_CodigoPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -360,9 +352,9 @@
           <Parameter Name="codigoDetallePedido" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_EliminarEntrenamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigoEntrenamiento" Type="int" Mode="In" />
+          <Parameter Name="codigo" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_EliminarInscripciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SP_EliminarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoInscripcion" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_EliminarLocales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -390,9 +382,9 @@
           <Parameter Name="codigoDetallePedido" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_HabilitarEntrenamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigoEntrenamiento" Type="int" Mode="In" />
+          <Parameter Name="codigo" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_HabilitarInscripciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SP_HabilitarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoInscripcion" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_HabilitarLocales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -420,10 +412,12 @@
         <Function Name="SP_MostrarEntrenamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarEntrenamientoTodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarInscripciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_MostrarInscripcionesTodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_MostrarInscripcionesPorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_MostrarInscripcionTodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarLocales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarLocalesTodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_MostrarMetodoPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarMetodoPagoTodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarPedidoTodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -434,12 +428,12 @@
         <Function Name="SP_MostrarTrainer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MostrarTrainerTodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_RegistrarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="nombre" Type="varchar(max)" Mode="In" />
-          <Parameter Name="correo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="telefono" Type="varchar(max)" Mode="In" />
-          <Parameter Name="direccion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="historialEntrenamientos" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="historialEntrenamientos" Type="varchar" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarDetallePedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codigoPedido" Type="varchar(max)" Mode="In" />
@@ -449,26 +443,24 @@
           <Parameter Name="estado" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarEntrenamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="tipo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaHora" Type="varchar(max)" Mode="In" />
-          <Parameter Name="duracion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="ubicacion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="capacidadMaxima" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoTrainer" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoLocal" Type="varchar(max)" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="fechaHora" Type="datetime" Mode="In" />
+          <Parameter Name="duracion" Type="decimal" Mode="In" />
+          <Parameter Name="ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="capacidadMaxima" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="codigoTrainer" Type="int" Mode="In" />
+          <Parameter Name="codigoLocal" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_RegistrarInscripciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoEntrenamiento" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaInscripcion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+        <Function Name="SP_RegistrarInscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
+          <Parameter Name="codigoEntrenamiento" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarLocales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="tipo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="direccion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="capacidadMaxima" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="capacidadMaxima" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarMetodoPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar(max)" Mode="In" />
@@ -476,24 +468,24 @@
           <Parameter Name="estado" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
-          <Parameter Name="idMetodoPago" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaPedido" Type="varchar(max)" Mode="In" />
-          <Parameter Name="total" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
+          <Parameter Name="idMetodoPago" Type="int" Mode="In" />
+          <Parameter Name="fechaPedido" Type="datetime" Mode="In" />
+          <Parameter Name="total" Type="decimal" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarReclamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="descripcion" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fecha" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarSancion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="fechaInicio" Type="varchar(max)" Mode="In" />
-          <Parameter Name="fechaFin" Type="varchar(max)" Mode="In" />
-          <Parameter Name="motivo" Type="varchar(max)" Mode="In" />
-          <Parameter Name="codigoCliente" Type="varchar(max)" Mode="In" />
-          <Parameter Name="estado" Type="varchar(max)" Mode="In" />
+          <Parameter Name="fechaInicio" Type="date" Mode="In" />
+          <Parameter Name="fechaFin" Type="date" Mode="In" />
+          <Parameter Name="motivo" Type="varchar" Mode="In" />
+          <Parameter Name="codigoCliente" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="SP_RegistrarTrainer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar(max)" Mode="In" />
@@ -502,7 +494,7 @@
           <Parameter Name="disponibilidad" Type="varchar(max)" Mode="In" />
           <Parameter Name="estado" Type="varchar(max)" Mode="In" />
         </Function>
-        <EntityContainer Name="SmartfitModelStoreContainer">
+        <EntityContainer Name="megaforceModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entrenamiento" EntityType="Self.Entrenamiento" Schema="dbo" store:Type="Tables" />
@@ -557,7 +549,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SmartfitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="megaforceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="codigoCliente" />
@@ -807,7 +799,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SmarfitEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="megaforceEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" />
           <EntitySet Name="Entrenamiento" EntityType="Self.Entrenamiento" />
@@ -858,15 +850,6 @@
             <End Role="MetodoPago" EntitySet="MetodoPago" />
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
-          <FunctionImport Name="SP_ActualizarCliente">
-            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="correo" Mode="In" Type="String" />
-            <Parameter Name="telefono" Mode="In" Type="String" />
-            <Parameter Name="direccion" Mode="In" Type="String" />
-            <Parameter Name="historialEntrenamientos" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_ActualizarDetallePedido">
             <Parameter Name="codigoDetallePedido" Mode="In" Type="Int32" />
             <Parameter Name="codigoPedido" Mode="In" Type="String" />
@@ -875,59 +858,58 @@
             <Parameter Name="precioUnitario" Mode="In" Type="String" />
             <Parameter Name="estado" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_ActualizarEntrenamiento">
-            <Parameter Name="codigoEntrenamiento" Mode="In" Type="Int32" />
-            <Parameter Name="tipo" Mode="In" Type="String" />
-            <Parameter Name="fechaHora" Mode="In" Type="String" />
-            <Parameter Name="duracion" Mode="In" Type="String" />
-            <Parameter Name="ubicacion" Mode="In" Type="String" />
-            <Parameter Name="capacidadMaxima" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-            <Parameter Name="codigoTrainer" Mode="In" Type="String" />
-            <Parameter Name="codigoLocal" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_ActualizarInscripciones">
-            <Parameter Name="codigoInscripcion" Mode="In" Type="Int32" />
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
-            <Parameter Name="codigoEntrenamiento" Mode="In" Type="String" />
-            <Parameter Name="fechaInscripcion" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_ActualizarLocales">
-            <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
-            <Parameter Name="tipo" Mode="In" Type="String" />
-            <Parameter Name="direccion" Mode="In" Type="String" />
-            <Parameter Name="capacidadMaxima" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_ActualizarMetodoPago">
             <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="descripcion" Mode="In" Type="String" />
             <Parameter Name="estado" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_ActualizarPedido">
-            <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
-            <Parameter Name="idMetodoPago" Mode="In" Type="String" />
-            <Parameter Name="fechaPedido" Mode="In" Type="String" />
-            <Parameter Name="total" Mode="In" Type="String" />
+          <FunctionImport Name="SP_BuscarDetallePedidoXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarDetallePedidoXCodigo_Result)">
+          <Parameter Name="codigoDetallePedido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarMetodoPagoXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarMetodoPagoXCodigo_Result)">
+          <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CodigoDetallePedido" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_CodigoMetodoPago" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_EliminarDetallePedido">
+          <Parameter Name="codigoDetallePedido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EliminarMetodoPago">
+          <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarDetallePedido">
+          <Parameter Name="codigoDetallePedido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarMetodoPago">
+          <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MostrarDetallePedido" ReturnType="Collection(megaforceModel.SP_MostrarDetallePedido_Result)" />
+          <FunctionImport Name="SP_MostrarDetallePedidoTodo" ReturnType="Collection(megaforceModel.SP_MostrarDetallePedidoTodo_Result)" />
+          <FunctionImport Name="SP_MostrarMetodoPago" ReturnType="Collection(megaforceModel.SP_MostrarMetodoPago_Result)" />
+          <FunctionImport Name="SP_MostrarMetodoPagoTodo" ReturnType="Collection(megaforceModel.SP_MostrarMetodoPagoTodo_Result)" />
+          <FunctionImport Name="SP_RegistrarDetallePedido">
+            <Parameter Name="codigoPedido" Mode="In" Type="String" />
+            <Parameter Name="codigoEntrenamiento" Mode="In" Type="String" />
+            <Parameter Name="cantidad" Mode="In" Type="String" />
+            <Parameter Name="precioUnitario" Mode="In" Type="String" />
             <Parameter Name="estado" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_ActualizarReclamo">
-            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          <FunctionImport Name="SP_RegistrarMetodoPago">
+            <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="fecha" Mode="In" Type="String" />
             <Parameter Name="estado" Mode="In" Type="String" />
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_ActualizarSancion">
-            <Parameter Name="codigo" Mode="In" Type="Int32" />
-            <Parameter Name="fechaInicio" Mode="In" Type="String" />
-            <Parameter Name="fechaFin" Mode="In" Type="String" />
-            <Parameter Name="motivo" Mode="In" Type="String" />
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
+          <FunctionImport Name="SP_ActualizarEntrenamiento">
+            <Parameter Name="codigoEntrenamiento" Mode="In" Type="Int32" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="fechaHora" Mode="In" Type="DateTime" />
+            <Parameter Name="duracion" Mode="In" Type="Decimal" />
+            <Parameter Name="ubicacion" Mode="In" Type="String" />
+            <Parameter Name="capacidadMaxima" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="codigoTrainer" Mode="In" Type="Int32" />
+            <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_ActualizarTrainer">
             <Parameter Name="codigoTrainer" Mode="In" Type="Int32" />
@@ -937,187 +919,39 @@
             <Parameter Name="disponibilidad" Mode="In" Type="String" />
             <Parameter Name="estado" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_BuscarClienteXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarClienteXCodigo_Result)">
-          <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarDetallePedidoXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarDetallePedidoXCodigo_Result)">
-          <Parameter Name="codigoDetallePedido" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarEntrenamientoXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarEntrenamientoXCodigo_Result)">
-          <Parameter Name="codigoEntrenamiento" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarInscripcionesXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarInscripcionesXCodigo_Result)">
-          <Parameter Name="codigoInscripcion" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarLocalesXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarLocalesXCodigo_Result)">
-          <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarMetodoPagoXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarMetodoPagoXCodigo_Result)">
-          <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarPedidoXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarPedidoXCodigo_Result)">
-          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarReclamoXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarReclamoXCodigo_Result)">
+          <FunctionImport Name="SP_BuscarEntrenamientoXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarEntrenamientoXCodigo_Result)">
           <Parameter Name="codigo" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_BuscarSancionXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarSancionXCodigo_Result)">
-          <Parameter Name="codigo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarTrainerXCodigo" ReturnType="Collection(SmartfitModel.SP_BuscarTrainerXCodigo_Result)">
+          <FunctionImport Name="SP_BuscarTrainerXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarTrainerXCodigo_Result)">
           <Parameter Name="codigoTrainer" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_CodigoCliente" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_CodigoDetallePedido" ReturnType="Collection(Int32)" />
           <FunctionImport Name="SP_CodigoEntrenamiento" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_CodigoInscripciones" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_CodigoLocales" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_CodigoMetodoPago" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_CodigoPedido" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_CodigoReclamo" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_CodigoSancion" ReturnType="Collection(Int32)" />
           <FunctionImport Name="SP_CodigoTrainer" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="SP_EliminarCliente">
-          <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EliminarDetallePedido">
-          <Parameter Name="codigoDetallePedido" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_EliminarEntrenamiento">
-          <Parameter Name="codigoEntrenamiento" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EliminarInscripciones">
-          <Parameter Name="codigoInscripcion" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EliminarLocales">
-          <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EliminarMetodoPago">
-          <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EliminarPedido">
-          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EliminarReclamo">
-          <Parameter Name="codigo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EliminarSancion">
           <Parameter Name="codigo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_EliminarTrainer">
           <Parameter Name="codigoTrainer" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_HabilitarCliente">
-          <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_HabilitarDetallePedido">
-          <Parameter Name="codigoDetallePedido" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_HabilitarEntrenamiento">
-          <Parameter Name="codigoEntrenamiento" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_HabilitarInscripciones">
-          <Parameter Name="codigoInscripcion" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_HabilitarLocales">
-          <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_HabilitarMetodoPago">
-          <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_HabilitarPedido">
-          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_HabilitarReclamo">
-          <Parameter Name="codigo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_HabilitarSancion">
           <Parameter Name="codigo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_HabilitarTrainer">
           <Parameter Name="codigoTrainer" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_MostrarCliente" ReturnType="Collection(SmartfitModel.SP_MostrarCliente_Result)" />
-          <FunctionImport Name="SP_MostrarClienteTodo" ReturnType="Collection(SmartfitModel.SP_MostrarClienteTodo_Result)" />
-          <FunctionImport Name="SP_MostrarDetallePedido" ReturnType="Collection(SmartfitModel.SP_MostrarDetallePedido_Result)" />
-          <FunctionImport Name="SP_MostrarDetallePedidoTodo" ReturnType="Collection(SmartfitModel.SP_MostrarDetallePedidoTodo_Result)" />
-          <FunctionImport Name="SP_MostrarEntrenamiento" ReturnType="Collection(SmartfitModel.SP_MostrarEntrenamiento_Result)" />
-          <FunctionImport Name="SP_MostrarEntrenamientoTodo" ReturnType="Collection(SmartfitModel.SP_MostrarEntrenamientoTodo_Result)" />
-          <FunctionImport Name="SP_MostrarInscripciones" ReturnType="Collection(SmartfitModel.SP_MostrarInscripciones_Result)" />
-          <FunctionImport Name="SP_MostrarInscripcionesTodo" ReturnType="Collection(SmartfitModel.SP_MostrarInscripcionesTodo_Result)" />
-          <FunctionImport Name="SP_MostrarLocales" ReturnType="Collection(SmartfitModel.SP_MostrarLocales_Result)" />
-          <FunctionImport Name="SP_MostrarLocalesTodo" ReturnType="Collection(SmartfitModel.SP_MostrarLocalesTodo_Result)" />
-          <FunctionImport Name="SP_MostrarMetodoPago" ReturnType="Collection(SmartfitModel.SP_MostrarMetodoPago_Result)" />
-          <FunctionImport Name="SP_MostrarMetodoPagoTodo" ReturnType="Collection(SmartfitModel.SP_MostrarMetodoPagoTodo_Result)" />
-          <FunctionImport Name="SP_MostrarPedido" ReturnType="Collection(SmartfitModel.SP_MostrarPedido_Result)" />
-          <FunctionImport Name="SP_MostrarPedidoTodo" ReturnType="Collection(SmartfitModel.SP_MostrarPedidoTodo_Result)" />
-          <FunctionImport Name="SP_MostrarReclamo" ReturnType="Collection(SmartfitModel.SP_MostrarReclamo_Result)" />
-          <FunctionImport Name="SP_MostrarReclamoTodo" ReturnType="Collection(SmartfitModel.SP_MostrarReclamoTodo_Result)" />
-          <FunctionImport Name="SP_MostrarSancion" ReturnType="Collection(SmartfitModel.SP_MostrarSancion_Result)" />
-          <FunctionImport Name="SP_MostrarSancionTodo" ReturnType="Collection(SmartfitModel.SP_MostrarSancionTodo_Result)" />
-          <FunctionImport Name="SP_MostrarTrainer" ReturnType="Collection(SmartfitModel.SP_MostrarTrainer_Result)" />
-          <FunctionImport Name="SP_MostrarTrainerTodo" ReturnType="Collection(SmartfitModel.SP_MostrarTrainerTodo_Result)" />
-          <FunctionImport Name="SP_RegistrarCliente">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="correo" Mode="In" Type="String" />
-            <Parameter Name="telefono" Mode="In" Type="String" />
-            <Parameter Name="direccion" Mode="In" Type="String" />
-            <Parameter Name="historialEntrenamientos" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistrarDetallePedido">
-            <Parameter Name="codigoPedido" Mode="In" Type="String" />
-            <Parameter Name="codigoEntrenamiento" Mode="In" Type="String" />
-            <Parameter Name="cantidad" Mode="In" Type="String" />
-            <Parameter Name="precioUnitario" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
+          <FunctionImport Name="SP_MostrarEntrenamiento" ReturnType="Collection(megaforceModel.SP_MostrarEntrenamiento_Result)" />
+          <FunctionImport Name="SP_MostrarEntrenamientoTodo" ReturnType="Collection(megaforceModel.SP_MostrarEntrenamientoTodo_Result)" />
+          <FunctionImport Name="SP_MostrarTrainer" ReturnType="Collection(megaforceModel.SP_MostrarTrainer_Result)" />
+          <FunctionImport Name="SP_MostrarTrainerTodo" ReturnType="Collection(megaforceModel.SP_MostrarTrainerTodo_Result)" />
           <FunctionImport Name="SP_RegistrarEntrenamiento">
             <Parameter Name="tipo" Mode="In" Type="String" />
-            <Parameter Name="fechaHora" Mode="In" Type="String" />
-            <Parameter Name="duracion" Mode="In" Type="String" />
+            <Parameter Name="fechaHora" Mode="In" Type="DateTime" />
+            <Parameter Name="duracion" Mode="In" Type="Decimal" />
             <Parameter Name="ubicacion" Mode="In" Type="String" />
-            <Parameter Name="capacidadMaxima" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-            <Parameter Name="codigoTrainer" Mode="In" Type="String" />
-            <Parameter Name="codigoLocal" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistrarInscripciones">
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
-            <Parameter Name="codigoEntrenamiento" Mode="In" Type="String" />
-            <Parameter Name="fechaInscripcion" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistrarLocales">
-            <Parameter Name="tipo" Mode="In" Type="String" />
-            <Parameter Name="direccion" Mode="In" Type="String" />
-            <Parameter Name="capacidadMaxima" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistrarMetodoPago">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistrarPedido">
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
-            <Parameter Name="idMetodoPago" Mode="In" Type="String" />
-            <Parameter Name="fechaPedido" Mode="In" Type="String" />
-            <Parameter Name="total" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistrarReclamo">
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-            <Parameter Name="fecha" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RegistrarSancion">
-            <Parameter Name="fechaInicio" Mode="In" Type="String" />
-            <Parameter Name="fechaFin" Mode="In" Type="String" />
-            <Parameter Name="motivo" Mode="In" Type="String" />
-            <Parameter Name="codigoCliente" Mode="In" Type="String" />
-            <Parameter Name="estado" Mode="In" Type="String" />
+            <Parameter Name="capacidadMaxima" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="codigoTrainer" Mode="In" Type="Int32" />
+            <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_RegistrarTrainer">
             <Parameter Name="nombre" Mode="In" Type="String" />
@@ -1126,16 +960,158 @@
             <Parameter Name="disponibilidad" Mode="In" Type="String" />
             <Parameter Name="estado" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_ActualizarLocales">
+            <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="capacidadMaxima" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarLocalesXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarLocalesXCodigo_Result)">
+          <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CodigoLocales" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_EliminarLocales">
+          <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarLocales">
+          <Parameter Name="codigoLocal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MostrarLocales" ReturnType="Collection(megaforceModel.SP_MostrarLocales_Result)" />
+          <FunctionImport Name="SP_MostrarLocalesTodo" ReturnType="Collection(megaforceModel.SP_MostrarLocalesTodo_Result)" />
+          <FunctionImport Name="SP_RegistrarLocales">
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="capacidadMaxima" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EliminarInscripcion" ReturnType="Collection(String)">
+          <Parameter Name="codigoInscripcion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarInscripcion" ReturnType="Collection(String)">
+          <Parameter Name="codigoInscripcion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MostrarInscripciones" ReturnType="Collection(megaforceModel.SP_MostrarInscripciones_Result)" />
+          <FunctionImport Name="SP_MostrarInscripcionesPorCliente" ReturnType="Collection(megaforceModel.SP_MostrarInscripcionesPorCliente_Result)">
+          <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RegistrarInscripcion" ReturnType="Collection(String)">
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="codigoEntrenamiento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ActualizarPedido">
+            <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
+            <Parameter Name="fechaPedido" Mode="In" Type="DateTime" />
+            <Parameter Name="total" Mode="In" Type="Decimal" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ActualizarSancion">
+            <Parameter Name="codigo" Mode="In" Type="Int32" />
+            <Parameter Name="fechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="motivo" Mode="In" Type="String" />
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarPedidoXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarPedidoXCodigo_Result)">
+          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarSancionXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarSancionXCodigo_Result)">
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CodigoPedido" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_CodigoSancion" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_EliminarPedido">
+          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EliminarSancion">
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarPedido">
+          <Parameter Name="codigoPedido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarSancion">
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MostrarPedido" ReturnType="Collection(megaforceModel.SP_MostrarPedido_Result)" />
+          <FunctionImport Name="SP_MostrarPedidoTodo" ReturnType="Collection(megaforceModel.SP_MostrarPedidoTodo_Result)" />
+          <FunctionImport Name="SP_MostrarSancion" ReturnType="Collection(megaforceModel.SP_MostrarSancion_Result)" />
+          <FunctionImport Name="SP_MostrarSancionTodo" ReturnType="Collection(megaforceModel.SP_MostrarSancionTodo_Result)" />
+          <FunctionImport Name="SP_RegistrarPedido">
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idMetodoPago" Mode="In" Type="Int32" />
+            <Parameter Name="fechaPedido" Mode="In" Type="DateTime" />
+            <Parameter Name="total" Mode="In" Type="Decimal" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RegistrarSancion">
+            <Parameter Name="fechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="motivo" Mode="In" Type="String" />
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarInscripcionXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarInscripcionXCodigo_Result)">
+          <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MostrarInscripcionTodo" ReturnType="Collection(megaforceModel.SP_MostrarInscripcionTodo_Result)" />
+          <FunctionImport Name="SP_ActualizarCliente">
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="historialEntrenamientos" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ActualizarReclamo">
+            <Parameter Name="codigo" Mode="In" Type="Int32" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarClienteXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarClienteXCodigo_Result)">
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarReclamoXCodigo" ReturnType="Collection(megaforceModel.SP_BuscarReclamoXCodigo_Result)">
+            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CodigoCliente" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_CodigoReclamo" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_EliminarCliente">
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EliminarReclamo">
+            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarCliente">
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HabilitarReclamo">
+            <Parameter Name="codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MostrarCliente" ReturnType="Collection(megaforceModel.SP_MostrarCliente_Result)" />
+          <FunctionImport Name="SP_MostrarClienteTodo" ReturnType="Collection(megaforceModel.SP_MostrarClienteTodo_Result)" />
+          <FunctionImport Name="SP_MostrarReclamo" ReturnType="Collection(megaforceModel.SP_MostrarReclamo_Result)" />
+          <FunctionImport Name="SP_MostrarReclamoTodo" ReturnType="Collection(megaforceModel.SP_MostrarReclamoTodo_Result)" />
+          <FunctionImport Name="SP_RegistrarCliente">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="historialEntrenamientos" Mode="In" Type="String" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RegistrarReclamo">
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="estado" Mode="In" Type="Boolean" />
+            <Parameter Name="codigoCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="SP_BuscarClienteXCodigo_Result">
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="correo" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="telefono" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="direccion" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="historialEntrenamientos" Nullable="false" MaxLength="100" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="SP_BuscarDetallePedidoXCodigo_Result">
           <Property Type="Int32" Name="codigoDetallePedido" Nullable="false" />
           <Property Type="Int32" Name="codigoPedido" Nullable="false" />
@@ -1143,9 +1119,40 @@
           <Property Type="Int32" Name="cantidad" Nullable="false" />
           <Property Type="Decimal" Name="precioUnitario" Nullable="false" Precision="10" Scale="2" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
-          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="NombreEntrenamiento" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="21" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SP_BuscarMetodoPagoXCodigo_Result">
+          <Property Type="Int32" Name="idMetodoPago" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="150" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarDetallePedido_Result">
+          <Property Type="Int32" Name="codigoDetallePedido" Nullable="false" />
+          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
+          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
+          <Property Type="Int32" Name="cantidad" Nullable="false" />
+          <Property Type="Decimal" Name="precioUnitario" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarDetallePedidoTodo_Result">
+          <Property Type="Int32" Name="codigoDetallePedido" Nullable="false" />
+          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
+          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
+          <Property Type="Int32" Name="cantidad" Nullable="false" />
+          <Property Type="Decimal" Name="precioUnitario" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarMetodoPago_Result">
+          <Property Type="Int32" Name="idMetodoPago" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="150" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarMetodoPagoTodo_Result">
+          <Property Type="Int32" Name="idMetodoPago" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="150" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_BuscarEntrenamientoXCodigo_Result">
           <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
@@ -1156,13 +1163,58 @@
           <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
           <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
+          <Property Type="String" Name="nombreTrainer" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="codigoLocal" Nullable="false" />
+          <Property Type="String" Name="tipoLocal" Nullable="false" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="SP_BuscarInscripcionesXCodigo_Result">
-          <Property Type="Int32" Name="codigoInscripcion" Nullable="false" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+        <ComplexType Name="SP_BuscarTrainerXCodigo_Result">
+          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="especialidad" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="disponibilidad" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarEntrenamiento_Result">
           <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
-          <Property Type="DateTime" Name="fechaInscripcion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="tipo" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaHora" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="duracion" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="ubicacion" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
+          <Property Type="String" Name="tipo1" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarEntrenamientoTodo_Result">
+          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
+          <Property Type="String" Name="tipoEntrenamiento" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaHora" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="duracion" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="ubicacion" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
+          <Property Type="String" Name="nombreTrainer" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
+          <Property Type="String" Name="tipoLocal" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarTrainer_Result">
+          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="especialidad" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="disponibilidad" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarTrainerTodo_Result">
+          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="especialidad" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="disponibilidad" Nullable="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_BuscarLocalesXCodigo_Result">
@@ -1172,42 +1224,127 @@
           <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="SP_BuscarMetodoPagoXCodigo_Result">
-          <Property Type="Int32" Name="idMetodoPago" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="150" />
+        <ComplexType Name="SP_MostrarLocales_Result">
+          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
+          <Property Type="String" Name="tipo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="direccion" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarLocalesTodo_Result">
+          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
+          <Property Type="String" Name="tipo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="direccion" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarInscripciones_Result">
+          <Property Type="Int32" Name="codigoInscripcion" Nullable="false" />
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
+          <Property Type="String" Name="NombreEntrenamiento" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaInscripcion" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarInscripcionesPorCliente_Result">
+          <Property Type="Int32" Name="codigoInscripcion" Nullable="false" />
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
+          <Property Type="String" Name="NombreEntrenamiento" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaInscripcion" Nullable="false" Precision="23" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_BuscarPedidoXCodigo_Result">
           <Property Type="Int32" Name="codigoPedido" Nullable="false" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="Int32" Name="idMetodoPago" Nullable="true" />
           <Property Type="DateTime" Name="fechaPedido" Nullable="false" Precision="23" />
           <Property Type="Decimal" Name="total" Nullable="false" Precision="10" Scale="2" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_BuscarReclamoXCodigo_Result">
-          <Property Type="Int32" Name="codigo" Nullable="false" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" />
-          <Property Type="DateTime" Name="fecha" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
           <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correoCliente" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="SP_BuscarSancionXCodigo_Result">
           <Property Type="Int32" Name="codigo" Nullable="false" />
           <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
           <Property Type="DateTime" Name="fechaFin" Nullable="false" />
           <Property Type="String" Name="motivo" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
           <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correoCliente" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarPedido_Result">
+          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
+          <Property Type="DateTime" Name="fechaPedido" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="total" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correoCliente" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarPedidoTodo_Result">
+          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
+          <Property Type="DateTime" Name="fechaPedido" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="total" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correoCliente" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarSancion_Result">
+          <Property Type="Int32" Name="codigo" Nullable="false" />
+          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFin" Nullable="false" />
+          <Property Type="String" Name="motivo" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correoCliente" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_MostrarSancionTodo_Result">
+          <Property Type="Int32" Name="codigo" Nullable="false" />
+          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFin" Nullable="false" />
+          <Property Type="String" Name="motivo" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correoCliente" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_BuscarInscripcionXCodigo_Result">
+          <Property Type="Int32" Name="codigoInscripcion" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="tipoEntrenamiento" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaInscripcion" Nullable="false" Precision="23" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="SP_BuscarTrainerXCodigo_Result">
-          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="especialidad" Nullable="false" MaxLength="100" />
-          <Property Type="Boolean" Name="disponibilidad" Nullable="false" />
+        <ComplexType Name="SP_MostrarInscripcionTodo_Result">
+          <Property Type="Int32" Name="codigoInscripcion" Nullable="false" />
+          <Property Type="String" Name="nombreCliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="tipoEntrenamiento" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaInscripcion" Nullable="false" Precision="23" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_BuscarClienteXCodigo_Result">
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="telefono" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="direccion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="historialEntrenamientos" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_BuscarReclamoXCodigo_Result">
+          <Property Type="Int32" Name="codigo" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Boolean" Name="estadoReclamo" Nullable="false" />
+          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correo" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="estadoCliente" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_MostrarCliente_Result">
           <Property Type="Int32" Name="codigoCliente" Nullable="false" />
@@ -1227,157 +1364,34 @@
           <Property Type="String" Name="historialEntrenamientos" Nullable="false" MaxLength="100" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="SP_MostrarDetallePedido_Result">
-          <Property Type="Int32" Name="codigoDetallePedido" Nullable="false" />
-          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
-          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
-          <Property Type="Int32" Name="cantidad" Nullable="false" />
-          <Property Type="Decimal" Name="precioUnitario" Nullable="false" Precision="10" Scale="2" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarDetallePedidoTodo_Result">
-          <Property Type="Int32" Name="codigoDetallePedido" Nullable="false" />
-          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
-          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
-          <Property Type="Int32" Name="cantidad" Nullable="false" />
-          <Property Type="Decimal" Name="precioUnitario" Nullable="false" Precision="10" Scale="2" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="NombreEntrenamiento" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="21" Scale="2" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarEntrenamiento_Result">
-          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
-          <Property Type="String" Name="tipo" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="fechaHora" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="duracion" Nullable="false" Precision="5" Scale="2" />
-          <Property Type="String" Name="ubicacion" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
-          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarEntrenamientoTodo_Result">
-          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
-          <Property Type="String" Name="tipo" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="fechaHora" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="duracion" Nullable="false" Precision="5" Scale="2" />
-          <Property Type="String" Name="ubicacion" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
-          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarInscripciones_Result">
-          <Property Type="Int32" Name="codigoInscripcion" Nullable="false" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
-          <Property Type="DateTime" Name="fechaInscripcion" Nullable="false" Precision="23" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarInscripcionesTodo_Result">
-          <Property Type="Int32" Name="codigoInscripcion" Nullable="false" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="Int32" Name="codigoEntrenamiento" Nullable="false" />
-          <Property Type="DateTime" Name="fechaInscripcion" Nullable="false" Precision="23" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarLocales_Result">
-          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
-          <Property Type="String" Name="tipo" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="direccion" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarLocalesTodo_Result">
-          <Property Type="Int32" Name="codigoLocal" Nullable="false" />
-          <Property Type="String" Name="tipo" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="direccion" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="capacidadMaxima" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarMetodoPago_Result">
-          <Property Type="Int32" Name="idMetodoPago" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="150" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarMetodoPagoTodo_Result">
-          <Property Type="Int32" Name="idMetodoPago" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="150" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarPedido_Result">
-          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="Int32" Name="idMetodoPago" Nullable="true" />
-          <Property Type="DateTime" Name="fechaPedido" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="total" Nullable="false" Precision="10" Scale="2" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarPedidoTodo_Result">
-          <Property Type="Int32" Name="codigoPedido" Nullable="false" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="Int32" Name="idMetodoPago" Nullable="true" />
-          <Property Type="DateTime" Name="fechaPedido" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="total" Nullable="false" Precision="10" Scale="2" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="SP_MostrarReclamo_Result">
           <Property Type="Int32" Name="codigo" Nullable="false" />
           <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Boolean" Name="estadoReclamo" Nullable="false" />
           <Property Type="Int32" Name="codigoCliente" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correo" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="estadoCliente" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_MostrarReclamoTodo_Result">
           <Property Type="Int32" Name="codigo" Nullable="false" />
           <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="Boolean" Name="estadoReclamo" Nullable="false" />
           <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarSancion_Result">
-          <Property Type="Int32" Name="codigo" Nullable="false" />
-          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
-          <Property Type="DateTime" Name="fechaFin" Nullable="false" />
-          <Property Type="String" Name="motivo" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarSancionTodo_Result">
-          <Property Type="Int32" Name="codigo" Nullable="false" />
-          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
-          <Property Type="DateTime" Name="fechaFin" Nullable="false" />
-          <Property Type="String" Name="motivo" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="codigoCliente" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarTrainer_Result">
-          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="especialidad" Nullable="false" MaxLength="100" />
-          <Property Type="Boolean" Name="disponibilidad" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_MostrarTrainerTodo_Result">
-          <Property Type="Int32" Name="codigoTrainer" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="especialidad" Nullable="false" MaxLength="100" />
-          <Property Type="Boolean" Name="disponibilidad" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="correo" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="estadoCliente" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SmartfitModelStoreContainer" CdmEntityContainer="SmarfitEntities">
+        <EntityContainerMapping StorageEntityContainer="megaforceModelStoreContainer" CdmEntityContainer="megaforceEntities">
           <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="SmartfitModel.Cliente">
+            <EntityTypeMapping TypeName="megaforceModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1390,7 +1404,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DetallePedido">
-            <EntityTypeMapping TypeName="SmartfitModel.DetallePedido">
+            <EntityTypeMapping TypeName="megaforceModel.DetallePedido">
               <MappingFragment StoreEntitySet="DetallePedido">
                 <ScalarProperty Name="codigoDetallePedido" ColumnName="codigoDetallePedido" />
                 <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
@@ -1402,7 +1416,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Entrenamiento">
-            <EntityTypeMapping TypeName="SmartfitModel.Entrenamiento">
+            <EntityTypeMapping TypeName="megaforceModel.Entrenamiento">
               <MappingFragment StoreEntitySet="Entrenamiento">
                 <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
@@ -1417,7 +1431,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inscripciones">
-            <EntityTypeMapping TypeName="SmartfitModel.Inscripciones">
+            <EntityTypeMapping TypeName="megaforceModel.Inscripciones">
               <MappingFragment StoreEntitySet="Inscripciones">
                 <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
@@ -1428,7 +1442,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Locales">
-            <EntityTypeMapping TypeName="SmartfitModel.Locales">
+            <EntityTypeMapping TypeName="megaforceModel.Locales">
               <MappingFragment StoreEntitySet="Locales">
                 <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
@@ -1439,7 +1453,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MetodoPago">
-            <EntityTypeMapping TypeName="SmartfitModel.MetodoPago">
+            <EntityTypeMapping TypeName="megaforceModel.MetodoPago">
               <MappingFragment StoreEntitySet="MetodoPago">
                 <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1449,7 +1463,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pedido">
-            <EntityTypeMapping TypeName="SmartfitModel.Pedido">
+            <EntityTypeMapping TypeName="megaforceModel.Pedido">
               <MappingFragment StoreEntitySet="Pedido">
                 <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
@@ -1461,7 +1475,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reclamo">
-            <EntityTypeMapping TypeName="SmartfitModel.Reclamo">
+            <EntityTypeMapping TypeName="megaforceModel.Reclamo">
               <MappingFragment StoreEntitySet="Reclamo">
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -1472,7 +1486,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sancion">
-            <EntityTypeMapping TypeName="SmartfitModel.Sancion">
+            <EntityTypeMapping TypeName="megaforceModel.Sancion">
               <MappingFragment StoreEntitySet="Sancion">
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
@@ -1484,7 +1498,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Trainer">
-            <EntityTypeMapping TypeName="SmartfitModel.Trainer">
+            <EntityTypeMapping TypeName="megaforceModel.Trainer">
               <MappingFragment StoreEntitySet="Trainer">
                 <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1495,419 +1509,440 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_ActualizarCliente" FunctionName="SmartfitModel.Store.SP_ActualizarCliente" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarDetallePedido" FunctionName="SmartfitModel.Store.SP_ActualizarDetallePedido" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarEntrenamiento" FunctionName="SmartfitModel.Store.SP_ActualizarEntrenamiento" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarInscripciones" FunctionName="SmartfitModel.Store.SP_ActualizarInscripciones" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarLocales" FunctionName="SmartfitModel.Store.SP_ActualizarLocales" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarMetodoPago" FunctionName="SmartfitModel.Store.SP_ActualizarMetodoPago" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarPedido" FunctionName="SmartfitModel.Store.SP_ActualizarPedido" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarReclamo" FunctionName="SmartfitModel.Store.SP_ActualizarReclamo" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarSancion" FunctionName="SmartfitModel.Store.SP_ActualizarSancion" />
-          <FunctionImportMapping FunctionImportName="SP_ActualizarTrainer" FunctionName="SmartfitModel.Store.SP_ActualizarTrainer" />
-          <FunctionImportMapping FunctionImportName="SP_BuscarClienteXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarClienteXCodigo">
+          <FunctionImportMapping FunctionImportName="SP_ActualizarDetallePedido" FunctionName="megaforceModel.Store.SP_ActualizarDetallePedido" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarMetodoPago" FunctionName="megaforceModel.Store.SP_ActualizarMetodoPago" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarDetallePedidoXCodigo" FunctionName="megaforceModel.Store.SP_BuscarDetallePedidoXCodigo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarClienteXCodigo_Result">
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="historialEntrenamientos" ColumnName="historialEntrenamientos" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarDetallePedidoXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarDetallePedidoXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarDetallePedidoXCodigo_Result">
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarDetallePedidoXCodigo_Result">
                 <ScalarProperty Name="codigoDetallePedido" ColumnName="codigoDetallePedido" />
                 <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
                 <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_BuscarMetodoPagoXCodigo" FunctionName="megaforceModel.Store.SP_BuscarMetodoPagoXCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarMetodoPagoXCodigo_Result">
+                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CodigoDetallePedido" FunctionName="megaforceModel.Store.SP_CodigoDetallePedido" />
+          <FunctionImportMapping FunctionImportName="SP_CodigoMetodoPago" FunctionName="megaforceModel.Store.SP_CodigoMetodoPago" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarDetallePedido" FunctionName="megaforceModel.Store.SP_EliminarDetallePedido" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarMetodoPago" FunctionName="megaforceModel.Store.SP_EliminarMetodoPago" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarDetallePedido" FunctionName="megaforceModel.Store.SP_HabilitarDetallePedido" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarMetodoPago" FunctionName="megaforceModel.Store.SP_HabilitarMetodoPago" />
+          <FunctionImportMapping FunctionImportName="SP_MostrarDetallePedido" FunctionName="megaforceModel.Store.SP_MostrarDetallePedido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarDetallePedido_Result">
+                <ScalarProperty Name="codigoDetallePedido" ColumnName="codigoDetallePedido" />
+                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
+                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarDetallePedidoTodo" FunctionName="megaforceModel.Store.SP_MostrarDetallePedidoTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarDetallePedidoTodo_Result">
+                <ScalarProperty Name="codigoDetallePedido" ColumnName="codigoDetallePedido" />
+                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
+                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarMetodoPagoTodo" FunctionName="megaforceModel.Store.SP_MostrarMetodoPagoTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarMetodoPagoTodo_Result">
+                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_RegistrarDetallePedido" FunctionName="megaforceModel.Store.SP_RegistrarDetallePedido" />
+          <FunctionImportMapping FunctionImportName="SP_RegistrarMetodoPago" FunctionName="megaforceModel.Store.SP_RegistrarMetodoPago" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarEntrenamiento" FunctionName="megaforceModel.Store.SP_ActualizarEntrenamiento" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarTrainer" FunctionName="megaforceModel.Store.SP_ActualizarTrainer" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarEntrenamientoXCodigo" FunctionName="megaforceModel.Store.SP_BuscarEntrenamientoXCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarEntrenamientoXCodigo_Result">
+                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="fechaHora" ColumnName="fechaHora" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
+                <ScalarProperty Name="nombreTrainer" ColumnName="nombreTrainer" />
+                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
+                <ScalarProperty Name="tipoLocal" ColumnName="tipoLocal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_BuscarTrainerXCodigo" FunctionName="megaforceModel.Store.SP_BuscarTrainerXCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarTrainerXCodigo_Result">
+                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CodigoEntrenamiento" FunctionName="megaforceModel.Store.SP_CodigoEntrenamiento" />
+          <FunctionImportMapping FunctionImportName="SP_CodigoTrainer" FunctionName="megaforceModel.Store.SP_CodigoTrainer" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarEntrenamiento" FunctionName="megaforceModel.Store.SP_EliminarEntrenamiento" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarTrainer" FunctionName="megaforceModel.Store.SP_EliminarTrainer" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarEntrenamiento" FunctionName="megaforceModel.Store.SP_HabilitarEntrenamiento" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarTrainer" FunctionName="megaforceModel.Store.SP_HabilitarTrainer" />
+          <FunctionImportMapping FunctionImportName="SP_MostrarEntrenamiento" FunctionName="megaforceModel.Store.SP_MostrarEntrenamiento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarEntrenamiento_Result">
+                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="fechaHora" ColumnName="fechaHora" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
+                <ScalarProperty Name="tipo1" ColumnName="tipo1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarEntrenamientoTodo" FunctionName="megaforceModel.Store.SP_MostrarEntrenamientoTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarEntrenamientoTodo_Result">
+                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
+                <ScalarProperty Name="tipoEntrenamiento" ColumnName="tipoEntrenamiento" />
+                <ScalarProperty Name="fechaHora" ColumnName="fechaHora" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
+                <ScalarProperty Name="nombreTrainer" ColumnName="nombreTrainer" />
+                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
+                <ScalarProperty Name="tipoLocal" ColumnName="tipoLocal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarTrainer" FunctionName="megaforceModel.Store.SP_MostrarTrainer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarTrainer_Result">
+                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarTrainerTodo" FunctionName="megaforceModel.Store.SP_MostrarTrainerTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarTrainerTodo_Result">
+                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_RegistrarEntrenamiento" FunctionName="megaforceModel.Store.SP_RegistrarEntrenamiento" />
+          <FunctionImportMapping FunctionImportName="SP_RegistrarTrainer" FunctionName="megaforceModel.Store.SP_RegistrarTrainer" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarLocales" FunctionName="megaforceModel.Store.SP_ActualizarLocales" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarLocalesXCodigo" FunctionName="megaforceModel.Store.SP_BuscarLocalesXCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarLocalesXCodigo_Result">
+                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CodigoLocales" FunctionName="megaforceModel.Store.SP_CodigoLocales" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarLocales" FunctionName="megaforceModel.Store.SP_EliminarLocales" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarLocales" FunctionName="megaforceModel.Store.SP_HabilitarLocales" />
+          <FunctionImportMapping FunctionImportName="SP_MostrarLocales" FunctionName="megaforceModel.Store.SP_MostrarLocales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarLocales_Result">
+                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarLocalesTodo" FunctionName="megaforceModel.Store.SP_MostrarLocalesTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarLocalesTodo_Result">
+                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_RegistrarLocales" FunctionName="megaforceModel.Store.SP_RegistrarLocales" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarInscripcion" FunctionName="megaforceModel.Store.SP_EliminarInscripcion" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarInscripcion" FunctionName="megaforceModel.Store.SP_HabilitarInscripcion" />
+          <FunctionImportMapping FunctionImportName="SP_MostrarInscripciones" FunctionName="megaforceModel.Store.SP_MostrarInscripciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarInscripciones_Result">
+                <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
                 <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
                 <ScalarProperty Name="NombreEntrenamiento" ColumnName="NombreEntrenamiento" />
-                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarEntrenamientoXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarEntrenamientoXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarEntrenamientoXCodigo_Result">
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="fechaHora" ColumnName="fechaHora" />
-                <ScalarProperty Name="duracion" ColumnName="duracion" />
-                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
-                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
-                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarInscripcionesXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarInscripcionesXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarInscripcionesXCodigo_Result">
-                <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
                 <ScalarProperty Name="fechaInscripcion" ColumnName="fechaInscripcion" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarLocalesXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarLocalesXCodigo">
+          <FunctionImportMapping FunctionImportName="SP_MostrarInscripcionesPorCliente" FunctionName="megaforceModel.Store.SP_MostrarInscripcionesPorCliente">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarLocalesXCodigo_Result">
-                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarMetodoPagoXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarMetodoPagoXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarMetodoPagoXCodigo_Result">
-                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarPedidoXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarPedidoXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarPedidoXCodigo_Result">
-                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarInscripcionesPorCliente_Result">
+                <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
-                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarReclamoXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarReclamoXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarReclamoXCodigo_Result">
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarSancionXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarSancionXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarSancionXCodigo_Result">
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
-                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
-                <ScalarProperty Name="motivo" ColumnName="motivo" />
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_BuscarTrainerXCodigo" FunctionName="SmartfitModel.Store.SP_BuscarTrainerXCodigo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_BuscarTrainerXCodigo_Result">
-                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
-                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_CodigoCliente" FunctionName="SmartfitModel.Store.SP_CodigoCliente" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoDetallePedido" FunctionName="SmartfitModel.Store.SP_CodigoDetallePedido" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoEntrenamiento" FunctionName="SmartfitModel.Store.SP_CodigoEntrenamiento" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoInscripciones" FunctionName="SmartfitModel.Store.SP_CodigoInscripciones" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoLocales" FunctionName="SmartfitModel.Store.SP_CodigoLocales" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoMetodoPago" FunctionName="SmartfitModel.Store.SP_CodigoMetodoPago" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoPedido" FunctionName="SmartfitModel.Store.SP_CodigoPedido" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoReclamo" FunctionName="SmartfitModel.Store.SP_CodigoReclamo" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoSancion" FunctionName="SmartfitModel.Store.SP_CodigoSancion" />
-          <FunctionImportMapping FunctionImportName="SP_CodigoTrainer" FunctionName="SmartfitModel.Store.SP_CodigoTrainer" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarCliente" FunctionName="SmartfitModel.Store.SP_EliminarCliente" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarDetallePedido" FunctionName="SmartfitModel.Store.SP_EliminarDetallePedido" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarEntrenamiento" FunctionName="SmartfitModel.Store.SP_EliminarEntrenamiento" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarInscripciones" FunctionName="SmartfitModel.Store.SP_EliminarInscripciones" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarLocales" FunctionName="SmartfitModel.Store.SP_EliminarLocales" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarMetodoPago" FunctionName="SmartfitModel.Store.SP_EliminarMetodoPago" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarPedido" FunctionName="SmartfitModel.Store.SP_EliminarPedido" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarReclamo" FunctionName="SmartfitModel.Store.SP_EliminarReclamo" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarSancion" FunctionName="SmartfitModel.Store.SP_EliminarSancion" />
-          <FunctionImportMapping FunctionImportName="SP_EliminarTrainer" FunctionName="SmartfitModel.Store.SP_EliminarTrainer" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarCliente" FunctionName="SmartfitModel.Store.SP_HabilitarCliente" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarDetallePedido" FunctionName="SmartfitModel.Store.SP_HabilitarDetallePedido" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarEntrenamiento" FunctionName="SmartfitModel.Store.SP_HabilitarEntrenamiento" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarInscripciones" FunctionName="SmartfitModel.Store.SP_HabilitarInscripciones" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarLocales" FunctionName="SmartfitModel.Store.SP_HabilitarLocales" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarMetodoPago" FunctionName="SmartfitModel.Store.SP_HabilitarMetodoPago" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarPedido" FunctionName="SmartfitModel.Store.SP_HabilitarPedido" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarReclamo" FunctionName="SmartfitModel.Store.SP_HabilitarReclamo" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarSancion" FunctionName="SmartfitModel.Store.SP_HabilitarSancion" />
-          <FunctionImportMapping FunctionImportName="SP_HabilitarTrainer" FunctionName="SmartfitModel.Store.SP_HabilitarTrainer" />
-          <FunctionImportMapping FunctionImportName="SP_MostrarCliente" FunctionName="SmartfitModel.Store.SP_MostrarCliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarCliente_Result">
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="historialEntrenamientos" ColumnName="historialEntrenamientos" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarClienteTodo" FunctionName="SmartfitModel.Store.SP_MostrarClienteTodo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarClienteTodo_Result">
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="historialEntrenamientos" ColumnName="historialEntrenamientos" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarDetallePedido" FunctionName="SmartfitModel.Store.SP_MostrarDetallePedido">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarDetallePedido_Result">
-                <ScalarProperty Name="codigoDetallePedido" ColumnName="codigoDetallePedido" />
-                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarDetallePedidoTodo" FunctionName="SmartfitModel.Store.SP_MostrarDetallePedidoTodo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarDetallePedidoTodo_Result">
-                <ScalarProperty Name="codigoDetallePedido" ColumnName="codigoDetallePedido" />
-                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
                 <ScalarProperty Name="NombreEntrenamiento" ColumnName="NombreEntrenamiento" />
-                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarEntrenamiento" FunctionName="SmartfitModel.Store.SP_MostrarEntrenamiento">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarEntrenamiento_Result">
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="fechaHora" ColumnName="fechaHora" />
-                <ScalarProperty Name="duracion" ColumnName="duracion" />
-                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
-                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
-                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarEntrenamientoTodo" FunctionName="SmartfitModel.Store.SP_MostrarEntrenamientoTodo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarEntrenamientoTodo_Result">
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="fechaHora" ColumnName="fechaHora" />
-                <ScalarProperty Name="duracion" ColumnName="duracion" />
-                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
-                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
-                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarInscripciones" FunctionName="SmartfitModel.Store.SP_MostrarInscripciones">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarInscripciones_Result">
-                <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
                 <ScalarProperty Name="fechaInscripcion" ColumnName="fechaInscripcion" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarInscripcionesTodo" FunctionName="SmartfitModel.Store.SP_MostrarInscripcionesTodo">
+          <FunctionImportMapping FunctionImportName="SP_RegistrarInscripcion" FunctionName="megaforceModel.Store.SP_RegistrarInscripcion" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarPedido" FunctionName="megaforceModel.Store.SP_ActualizarPedido" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarSancion" FunctionName="megaforceModel.Store.SP_ActualizarSancion" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarPedidoXCodigo" FunctionName="megaforceModel.Store.SP_BuscarPedidoXCodigo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarInscripcionesTodo_Result">
-                <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarPedidoXCodigo_Result">
+                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
+                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="codigoEntrenamiento" ColumnName="codigoEntrenamiento" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="correoCliente" ColumnName="correoCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_BuscarSancionXCodigo" FunctionName="megaforceModel.Store.SP_BuscarSancionXCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarSancionXCodigo_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="correoCliente" ColumnName="correoCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CodigoPedido" FunctionName="megaforceModel.Store.SP_CodigoPedido" />
+          <FunctionImportMapping FunctionImportName="SP_CodigoSancion" FunctionName="megaforceModel.Store.SP_CodigoSancion" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarPedido" FunctionName="megaforceModel.Store.SP_EliminarPedido" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarSancion" FunctionName="megaforceModel.Store.SP_EliminarSancion" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarPedido" FunctionName="megaforceModel.Store.SP_HabilitarPedido" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarSancion" FunctionName="megaforceModel.Store.SP_HabilitarSancion" />
+          <FunctionImportMapping FunctionImportName="SP_MostrarPedido" FunctionName="megaforceModel.Store.SP_MostrarPedido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarPedido_Result">
+                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
+                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="correoCliente" ColumnName="correoCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarPedidoTodo" FunctionName="megaforceModel.Store.SP_MostrarPedidoTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarPedidoTodo_Result">
+                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
+                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="correoCliente" ColumnName="correoCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarSancion" FunctionName="megaforceModel.Store.SP_MostrarSancion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarSancion_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="correoCliente" ColumnName="correoCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarSancionTodo" FunctionName="megaforceModel.Store.SP_MostrarSancionTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarSancionTodo_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="correoCliente" ColumnName="correoCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_RegistrarPedido" FunctionName="megaforceModel.Store.SP_RegistrarPedido" />
+          <FunctionImportMapping FunctionImportName="SP_RegistrarSancion" FunctionName="megaforceModel.Store.SP_RegistrarSancion" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarInscripcionXCodigo" FunctionName="megaforceModel.Store.SP_BuscarInscripcionXCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarInscripcionXCodigo_Result">
+                <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="tipoEntrenamiento" ColumnName="tipoEntrenamiento" />
                 <ScalarProperty Name="fechaInscripcion" ColumnName="fechaInscripcion" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarLocales" FunctionName="SmartfitModel.Store.SP_MostrarLocales">
+          <FunctionImportMapping FunctionImportName="SP_MostrarInscripcionTodo" FunctionName="megaforceModel.Store.SP_MostrarInscripcionTodo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarLocales_Result">
-                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarInscripcionTodo_Result">
+                <ScalarProperty Name="codigoInscripcion" ColumnName="codigoInscripcion" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="tipoEntrenamiento" ColumnName="tipoEntrenamiento" />
+                <ScalarProperty Name="fechaInscripcion" ColumnName="fechaInscripcion" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarLocalesTodo" FunctionName="SmartfitModel.Store.SP_MostrarLocalesTodo">
+          <FunctionImportMapping FunctionImportName="SP_ActualizarCliente" FunctionName="megaforceModel.Store.SP_ActualizarCliente" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarReclamo" FunctionName="megaforceModel.Store.SP_ActualizarReclamo" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarClienteXCodigo" FunctionName="megaforceModel.Store.SP_BuscarClienteXCodigo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarLocalesTodo_Result">
-                <ScalarProperty Name="codigoLocal" ColumnName="codigoLocal" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="capacidadMaxima" ColumnName="capacidadMaxima" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarMetodoPago" FunctionName="SmartfitModel.Store.SP_MostrarMetodoPago">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarMetodoPago_Result">
-                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarMetodoPagoTodo" FunctionName="SmartfitModel.Store.SP_MostrarMetodoPagoTodo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarMetodoPagoTodo_Result">
-                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarPedido" FunctionName="SmartfitModel.Store.SP_MostrarPedido">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarPedido_Result">
-                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarClienteXCodigo_Result">
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
-                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
-                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="historialEntrenamientos" ColumnName="historialEntrenamientos" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarPedidoTodo" FunctionName="SmartfitModel.Store.SP_MostrarPedidoTodo">
+          <FunctionImportMapping FunctionImportName="SP_BuscarReclamoXCodigo" FunctionName="megaforceModel.Store.SP_BuscarReclamoXCodigo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarPedidoTodo_Result">
-                <ScalarProperty Name="codigoPedido" ColumnName="codigoPedido" />
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
-                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarReclamo" FunctionName="SmartfitModel.Store.SP_MostrarReclamo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarReclamo_Result">
+              <ComplexTypeMapping TypeName="megaforceModel.SP_BuscarReclamoXCodigo_Result">
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="estadoReclamo" ColumnName="estadoReclamo" />
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estadoCliente" ColumnName="estadoCliente" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarReclamoTodo" FunctionName="SmartfitModel.Store.SP_MostrarReclamoTodo">
+          <FunctionImportMapping FunctionImportName="SP_CodigoCliente" FunctionName="megaforceModel.Store.SP_CodigoCliente" />
+          <FunctionImportMapping FunctionImportName="SP_CodigoReclamo" FunctionName="megaforceModel.Store.SP_CodigoReclamo" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarCliente" FunctionName="megaforceModel.Store.SP_EliminarCliente" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarReclamo" FunctionName="megaforceModel.Store.SP_EliminarReclamo" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarCliente" FunctionName="megaforceModel.Store.SP_HabilitarCliente" />
+          <FunctionImportMapping FunctionImportName="SP_HabilitarReclamo" FunctionName="megaforceModel.Store.SP_HabilitarReclamo" />
+          <FunctionImportMapping FunctionImportName="SP_MostrarCliente" FunctionName="megaforceModel.Store.SP_MostrarCliente">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarReclamoTodo_Result">
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarCliente_Result">
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="historialEntrenamientos" ColumnName="historialEntrenamientos" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarClienteTodo" FunctionName="megaforceModel.Store.SP_MostrarClienteTodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarClienteTodo_Result">
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="historialEntrenamientos" ColumnName="historialEntrenamientos" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MostrarReclamo" FunctionName="megaforceModel.Store.SP_MostrarReclamo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarReclamo_Result">
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="estadoReclamo" ColumnName="estadoReclamo" />
                 <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarSancion" FunctionName="SmartfitModel.Store.SP_MostrarSancion">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarSancion_Result">
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
-                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
-                <ScalarProperty Name="motivo" ColumnName="motivo" />
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarSancionTodo" FunctionName="SmartfitModel.Store.SP_MostrarSancionTodo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarSancionTodo_Result">
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
-                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
-                <ScalarProperty Name="motivo" ColumnName="motivo" />
-                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarTrainer" FunctionName="SmartfitModel.Store.SP_MostrarTrainer">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarTrainer_Result">
-                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
-                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estadoCliente" ColumnName="estadoCliente" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_MostrarTrainerTodo" FunctionName="SmartfitModel.Store.SP_MostrarTrainerTodo">
+          <FunctionImportMapping FunctionImportName="SP_MostrarReclamoTodo" FunctionName="megaforceModel.Store.SP_MostrarReclamoTodo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartfitModel.SP_MostrarTrainerTodo_Result">
-                <ScalarProperty Name="codigoTrainer" ColumnName="codigoTrainer" />
+              <ComplexTypeMapping TypeName="megaforceModel.SP_MostrarReclamoTodo_Result">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="estadoReclamo" ColumnName="estadoReclamo" />
+                <ScalarProperty Name="codigoCliente" ColumnName="codigoCliente" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
-                <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estadoCliente" ColumnName="estadoCliente" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_RegistrarCliente" FunctionName="SmartfitModel.Store.SP_RegistrarCliente" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarDetallePedido" FunctionName="SmartfitModel.Store.SP_RegistrarDetallePedido" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarEntrenamiento" FunctionName="SmartfitModel.Store.SP_RegistrarEntrenamiento" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarInscripciones" FunctionName="SmartfitModel.Store.SP_RegistrarInscripciones" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarLocales" FunctionName="SmartfitModel.Store.SP_RegistrarLocales" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarMetodoPago" FunctionName="SmartfitModel.Store.SP_RegistrarMetodoPago" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarPedido" FunctionName="SmartfitModel.Store.SP_RegistrarPedido" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarReclamo" FunctionName="SmartfitModel.Store.SP_RegistrarReclamo" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarSancion" FunctionName="SmartfitModel.Store.SP_RegistrarSancion" />
-          <FunctionImportMapping FunctionImportName="SP_RegistrarTrainer" FunctionName="SmartfitModel.Store.SP_RegistrarTrainer" />
+          <FunctionImportMapping FunctionImportName="SP_RegistrarCliente" FunctionName="megaforceModel.Store.SP_RegistrarCliente" />
+          <FunctionImportMapping FunctionImportName="SP_RegistrarReclamo" FunctionName="megaforceModel.Store.SP_RegistrarReclamo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

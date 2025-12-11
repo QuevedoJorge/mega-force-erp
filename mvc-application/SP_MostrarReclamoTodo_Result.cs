@@ -16,7 +16,10 @@ namespace mvc_application
         public int codigo { get; set; }
         public string descripcion { get; set; }
         public System.DateTime fecha { get; set; }
-        public bool estado { get; set; }
+        public bool estadoReclamo { get; set; }
         public int codigoCliente { get; set; }
+        public string nombre { get; set; }
+        public string correo { get; set; }
+        public bool estadoCliente { get; set; }
     }
 }

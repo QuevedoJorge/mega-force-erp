@@ -17,7 +17,9 @@ namespace mvc_application
         public System.DateTime fechaInicio { get; set; }
         public System.DateTime fechaFin { get; set; }
         public string motivo { get; set; }
-        public int codigoCliente { get; set; }
         public bool estado { get; set; }
+        public int codigoCliente { get; set; }
+        public string nombreCliente { get; set; }
+        public string correoCliente { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace mvc_application.Controllers
 {
     public class PedidoesController : Controller
     {
-        private SmarfitEntities db = new SmarfitEntities();
+        private megaforceEntities db = new megaforceEntities();
 
         // GET: Pedidoes
         public ActionResult Index()
@@ -48,17 +48,21 @@ namespace mvc_application.Controllers
         // POST: Pedidoes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "codigoCliente,total,estado")] Pedido pedido)
+        public ActionResult Create([Bind(Include = "codigoCliente,idMetodoPago,estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
+                // Set default values for fields not in the form
+                pedido.fechaPedido = DateTime.Now;
+                pedido.total = 0;
+
                 db.SP_RegistrarPedido(
-    pedido.codigoCliente.ToString(),
-    pedido.idMetodoPago.ToString(),
-    pedido.fechaPedido.ToString(),
-    "0",
-    pedido.estado.ToString()
-);
+                    pedido.codigoCliente,
+                    pedido.idMetodoPago,
+                    pedido.fechaPedido,
+                    pedido.total,
+                    pedido.estado
+                );
                 return RedirectToAction("Index");
             }
 
@@ -86,19 +90,19 @@ namespace mvc_application.Controllers
         // POST: Pedidoes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "codigoPedido,codigoCliente,fechaPedido,total,estado")] Pedido pedido)
+        public ActionResult Edit([Bind(Include = "codigoPedido,codigoCliente,idMetodoPago,fechaPedido,total,estado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
                 // Call the SP to update the order
                 db.SP_ActualizarPedido(
-    pedido.codigoPedido,
-    pedido.codigoCliente.ToString(),
-    pedido.idMetodoPago.ToString(),    
-    pedido.fechaPedido.ToString(),    
-    "0",                               
-    pedido.estado.ToString()          
-);
+                    pedido.codigoPedido,
+                    pedido.codigoCliente,
+                    pedido.idMetodoPago,
+                    pedido.fechaPedido,
+                    pedido.total,
+                    pedido.estado
+                );
                 return RedirectToAction("Index");
             }
             ViewBag.codigoCliente = new SelectList(db.Cliente, "codigoCliente", "nombre", pedido.codigoCliente);

@@ -11,18 +11,12 @@ namespace mvc_application
 {
     using System;
     
-    public partial class SP_BuscarEntrenamientoXCodigo_Result
+    public partial class SP_BuscarInscripcionXCodigo_Result
     {
-        public int codigoEntrenamiento { get; set; }
-        public string tipo { get; set; }
-        public System.DateTime fechaHora { get; set; }
-        public decimal duracion { get; set; }
-        public string ubicacion { get; set; }
-        public int capacidadMaxima { get; set; }
+        public int codigoInscripcion { get; set; }
+        public string nombreCliente { get; set; }
+        public string tipoEntrenamiento { get; set; }
+        public System.DateTime fechaInscripcion { get; set; }
         public bool estado { get; set; }
-        public int codigoTrainer { get; set; }
-        public string nombreTrainer { get; set; }
-        public int codigoLocal { get; set; }
-        public string tipoLocal { get; set; }
     }
 }

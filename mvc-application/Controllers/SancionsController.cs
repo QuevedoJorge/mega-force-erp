@@ -12,7 +12,7 @@ namespace mvc_application.Controllers
 {
     public class SancionsController : Controller
     {
-        private SmarfitEntities db = new SmarfitEntities();
+        private megaforceEntities db = new megaforceEntities();
 
         // GET: Sancions
         public ActionResult Index()
@@ -54,12 +54,12 @@ namespace mvc_application.Controllers
             {
                 // Call the SP to register the new sanction
                 db.SP_RegistrarSancion(
-    sancion.fechaInicio.ToString(),
-    sancion.fechaFin.ToString(),
-    sancion.motivo,
-    sancion.codigoCliente.ToString(),
-    sancion.estado.ToString()
-);
+                    sancion.fechaInicio,
+                    sancion.fechaFin,
+                    sancion.motivo,
+                    sancion.codigoCliente,
+                    sancion.estado
+                );
                 return RedirectToAction("Index");
             }
 
@@ -92,13 +92,14 @@ namespace mvc_application.Controllers
             if (ModelState.IsValid)
             {
                 // Call the SP to update the sanction
-                db.SP_RegistrarSancion(
-    sancion.fechaInicio.ToString(),
-    sancion.fechaFin.ToString(),
-    sancion.motivo,
-    sancion.codigoCliente.ToString(),
-    sancion.estado.ToString()
-);
+                db.SP_ActualizarSancion(
+                    sancion.codigo,
+                    sancion.fechaInicio,
+                    sancion.fechaFin,
+                    sancion.motivo,
+                    sancion.codigoCliente,
+                    sancion.estado
+                );
                 return RedirectToAction("Index");
             }
             ViewBag.codigoCliente = new SelectList(db.Cliente, "codigoCliente", "nombre", sancion.codigoCliente);

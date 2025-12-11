@@ -21,6 +21,8 @@ namespace mvc_application
         public int capacidadMaxima { get; set; }
         public bool estado { get; set; }
         public int codigoTrainer { get; set; }
+        public string nombre { get; set; }
         public int codigoLocal { get; set; }
+        public string tipo1 { get; set; }
     }
 }

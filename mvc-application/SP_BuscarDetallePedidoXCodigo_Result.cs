@@ -19,8 +19,5 @@ namespace mvc_application
         public int cantidad { get; set; }
         public decimal precioUnitario { get; set; }
         public bool estado { get; set; }
-        public string NombreCliente { get; set; }
-        public string NombreEntrenamiento { get; set; }
-        public Nullable<decimal> Subtotal { get; set; }
     }
 }

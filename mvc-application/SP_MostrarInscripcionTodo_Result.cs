@@ -11,11 +11,11 @@ namespace mvc_application
 {
     using System;
     
-    public partial class SP_BuscarInscripcionesXCodigo_Result
+    public partial class SP_MostrarInscripcionTodo_Result
     {
         public int codigoInscripcion { get; set; }
-        public int codigoCliente { get; set; }
-        public int codigoEntrenamiento { get; set; }
+        public string nombreCliente { get; set; }
+        public string tipoEntrenamiento { get; set; }
         public System.DateTime fechaInscripcion { get; set; }
         public bool estado { get; set; }
     }

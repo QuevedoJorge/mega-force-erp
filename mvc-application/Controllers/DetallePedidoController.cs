@@ -12,7 +12,7 @@ namespace mvc_application.Controllers
 {
     public class DetallePedidoController : Controller
     {
-        private SmarfitEntities db = new SmarfitEntities();
+        private megaforceEntities db = new megaforceEntities();
 
         // GET: DetallePedido
         public ActionResult Index()
